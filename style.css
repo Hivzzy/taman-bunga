@@ -57,6 +57,121 @@ body {
   z-index: 1;
 }
 
+/* Botanical Scenery (Multi-Size Botanical Layer in Background) */
+.botanical-scenery {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.garden-corner {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-corner {
+  left: 12px;
+}
+
+.right-corner {
+  right: 12px;
+}
+
+.pixel-giant-flower {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transform-origin: bottom center;
+  animation: swayGiant 4s infinite ease-in-out alternate;
+}
+
+.flower-head-giant {
+  font-size: 58px;
+  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.2));
+}
+
+.flower-stem-tall {
+  width: 6px;
+  height: 90px;
+  background: #2d6a4f;
+  border-radius: 3px;
+}
+
+.flower-leaf-left, .flower-leaf-right {
+  position: absolute;
+  font-size: 26px;
+}
+.flower-leaf-left { left: -14px; top: 75px; }
+.flower-leaf-right { right: -14px; top: 75px; }
+
+.pixel-medium-flower {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dandelion-med { right: -30px; animation: swayMed 3s infinite ease-in-out alternate 0.5s; }
+.rose-med { left: -30px; animation: swayMed 3s infinite ease-in-out alternate 1s; }
+
+.flower-head-med { font-size: 36px; }
+.flower-stem-med { width: 4px; height: 50px; background: #40916c; }
+
+.pixel-mini-creature {
+  position: absolute;
+  font-size: 22px;
+}
+.bee-mini {
+  top: -20px;
+  right: -10px;
+  animation: hoverCreature 2.4s infinite ease-in-out;
+}
+.ladybug-mini {
+  bottom: 40px;
+  left: 0px;
+  animation: crawlCreature 3.5s infinite ease-in-out;
+}
+
+@keyframes swayGiant {
+  0% { transform: rotate(-4deg); }
+  100% { transform: rotate(4deg); }
+}
+
+@keyframes swayMed {
+  0% { transform: rotate(-6deg); }
+  100% { transform: rotate(6deg); }
+}
+
+@keyframes hoverCreature {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-6px, -12px) scale(1.1); }
+}
+
+@keyframes crawlCreature {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Flower Garland on Top Header */
+.flower-garland {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.f-micro { font-size: 11px; opacity: 0.85; }
+.f-small { font-size: 16px; }
+.f-med { font-size: 22px; animation: swayFlower 2.5s infinite ease-in-out alternate; }
+
 /* Top Navigation */
 .top-nav {
   position: fixed;
@@ -674,10 +789,36 @@ body {
   padding-top: 4px;
 }
 
-.pixel-flowers-strip {
+/* Multi-Height Botanical Strip */
+.pixel-botanical-row {
   display: flex;
-  gap: 12px;
-  font-size: 16px;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+.bot-item {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: gentleSway 3s infinite ease-in-out alternate;
+}
+
+.bot-item:nth-child(2n) { animation-delay: 0.5s; }
+.bot-item:nth-child(3n) { animation-delay: 1.2s; }
+.bot-item:nth-child(4n) { animation-delay: 1.8s; }
+
+.size-micro { font-size: 13px; opacity: 0.85; }
+.size-small { font-size: 17px; }
+.size-med { font-size: 24px; }
+.size-large { font-size: 30px; }
+.size-giant { font-size: 38px; filter: drop-shadow(0 2px 0 var(--color-wood-shadow)); }
+
+@keyframes gentleSway {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
 }
 
 /* Modal */

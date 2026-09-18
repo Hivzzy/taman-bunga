@@ -17,8 +17,39 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Canvas untuk efek biji dandelion melayang, kelopak melati, mawar, dan bunga matahari -->
+  <!-- Canvas untuk efek partikel bunga multi-ukuran (mikro, sedang, besar) -->
   <canvas id="gardenCanvas"></canvas>
+
+  <!-- Multi-Size Botanical Pixel Art Scenery (Background Layer) -->
+  <div class="botanical-scenery">
+    <!-- Left Garden Corner: Giant Sunflower & Dandelion -->
+    <div class="garden-corner left-corner">
+      <div class="pixel-giant-flower sunflower-giant" title="Bunga Matahari Raksasa 🌻">
+        <span class="flower-head-giant">🌻</span>
+        <div class="flower-stem-tall"></div>
+        <div class="flower-leaf-left">🍃</div>
+      </div>
+      <div class="pixel-medium-flower dandelion-med">
+        <span class="flower-head-med">🌼</span>
+        <div class="flower-stem-med"></div>
+      </div>
+      <div class="pixel-mini-creature bee-mini">🐝</div>
+    </div>
+
+    <!-- Right Garden Corner: Giant Jasmine & Rose -->
+    <div class="garden-corner right-corner">
+      <div class="pixel-giant-flower jasmine-giant" title="Bunga Melati Putih 🤍">
+        <span class="flower-head-giant">🤍</span>
+        <div class="flower-stem-tall"></div>
+        <div class="flower-leaf-right">🌿</div>
+      </div>
+      <div class="pixel-medium-flower rose-med">
+        <span class="flower-head-med">🌹</span>
+        <div class="flower-stem-med"></div>
+      </div>
+      <div class="pixel-mini-creature ladybug-mini">🐞</div>
+    </div>
+  </div>
 
   <!-- Top Navigation (Sound Toggle & WA Settings) -->
   <nav class="top-nav">
@@ -33,14 +64,22 @@
   <!-- Main Game Container -->
   <main class="game-container">
     
-    <!-- Top Header Banner with Flowers -->
+    <!-- Top Header Banner with Multi-Sized Floral Garland -->
     <header class="game-header">
-      <span class="header-flower-icon">🌻</span>
+      <div class="flower-garland left-garland">
+        <span class="f-micro">🌿</span>
+        <span class="f-small">🌼</span>
+        <span class="f-med">🌻</span>
+      </div>
       <div class="header-titles">
         <span class="game-subtitle">★ SECRET GARDEN ADVENTURE ★</span>
         <h1 class="game-title">TAMAN BUNGA CINTA</h1>
       </div>
-      <span class="header-flower-icon">🌼</span>
+      <div class="flower-garland right-garland">
+        <span class="f-med">🌻</span>
+        <span class="f-small">🤍</span>
+        <span class="f-micro">🌹</span>
+      </div>
     </header>
 
     <!-- Character Stage: Flora The Flower Fairy 🧚‍♀️ -->
@@ -296,16 +335,20 @@
       </div>
     </section>
 
-    <!-- Bottom Garden Footer -->
+    <!-- Bottom Garden Footer (Multi-Height Pixel Botanical Row) -->
     <footer class="game-footer">
-      <div class="pixel-flowers-strip">
-        <span>🌻</span>
-        <span>🤍</span>
-        <span>🌹</span>
-        <span>🌼</span>
-        <span>🌿</span>
-        <span>🌻</span>
-        <span>🤍</span>
+      <div class="pixel-botanical-row">
+        <span class="bot-item size-giant" title="Bunga Matahari Besar">🌻</span>
+        <span class="bot-item size-micro" title="Semanggi Kecil">🍀</span>
+        <span class="bot-item size-med" title="Melati Putih">🤍</span>
+        <span class="bot-item size-small" title="Jamur Hutan">🍄</span>
+        <span class="bot-item size-large" title="Mawar Merah">🌹</span>
+        <span class="bot-item size-micro" title="Tunas Daun">🌿</span>
+        <span class="bot-item size-med" title="Dandelion Kuning">🌼</span>
+        <span class="bot-item size-giant" title="Bunga Matahari Raksasa">🌻</span>
+        <span class="bot-item size-small" title="Melati Harum">🤍</span>
+        <span class="bot-item size-large" title="Mawar Mekar">🌹</span>
+        <span class="bot-item size-micro" title="Kumbang Kecil">🐞</span>
       </div>
     </footer>
 

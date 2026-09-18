@@ -211,20 +211,51 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-const FLOWER_PETALS = ['🌼', '🤍', '🌻', '🌹', '🌿', '✨'];
+// Ragam flora & fauna taman dengan 5 tier ukuran
+const FLOWER_TIERS = [
+  // Micro tier (6px - 10px)
+  { type: 'micro', chars: ['✨', '🌾', '🌱', '🌿'], minSize: 8, maxSize: 12, speed: 0.6, countWeight: 0.35 },
+  // Small tier (14px - 18px)
+  { type: 'small', chars: ['🤍', '🍀', '🍃', '🌼', '🍄'], minSize: 14, maxSize: 18, speed: 1.0, countWeight: 0.30 },
+  // Medium tier (22px - 28px)
+  { type: 'medium', chars: ['🌻', '🌹', '🌼', '🤍', '🐝'], minSize: 22, maxSize: 28, speed: 1.3, countWeight: 0.20 },
+  // Large tier (32px - 42px)
+  { type: 'large', chars: ['🌻', '🦋', '🌹', '🌼'], minSize: 32, maxSize: 42, speed: 1.6, countWeight: 0.12 },
+  // Giant Foreground tier (48px - 60px)
+  { type: 'giant', chars: ['🌻', '🌹', '🤍'], minSize: 48, maxSize: 60, speed: 2.0, countWeight: 0.03 }
+];
+
+function getRandomTier() {
+  const rand = Math.random();
+  let cumulative = 0;
+  for (const tier of FLOWER_TIERS) {
+    cumulative += tier.countWeight;
+    if (rand <= cumulative) return tier;
+  }
+  return FLOWER_TIERS[1];
+}
 
 class GardenParticle {
-  constructor(x, y, isBurst = false, customChar = null) {
+  constructor(x, y, isBurst = false, customChar = null, customSize = null) {
+    const tier = getRandomTier();
     this.x = x !== undefined ? x : Math.random() * canvas.width;
-    this.y = y !== undefined ? y : (isBurst ? canvas.height / 2 : -20);
-    this.char = customChar || FLOWER_PETALS[Math.floor(Math.random() * FLOWER_PETALS.length)];
-    this.size = isBurst ? Math.floor(Math.random() * 8) + 16 : Math.floor(Math.random() * 10) + 14;
-    this.speedY = isBurst ? (Math.random() * 8 - 4) : (Math.random() * 1.4 + 0.7);
-    this.speedX = isBurst ? (Math.random() * 8 - 4) : (Math.sin(Math.random() * 10) * 0.9);
+    this.y = y !== undefined ? y : (isBurst ? canvas.height / 2 : -40);
+    this.char = customChar || tier.chars[Math.floor(Math.random() * tier.chars.length)];
+    
+    if (customSize) {
+      this.size = customSize;
+    } else {
+      this.size = isBurst 
+        ? Math.floor(Math.random() * 20) + 14 
+        : Math.floor(Math.random() * (tier.maxSize - tier.minSize)) + tier.minSize;
+    }
+
+    this.speedY = isBurst ? (Math.random() * 10 - 5) : (Math.random() * 1.2 + tier.speed);
+    this.speedX = isBurst ? (Math.random() * 10 - 5) : (Math.sin(Math.random() * 10) * 1.2);
     this.opacity = 1;
-    this.fade = isBurst ? 0.02 : 0.0025;
+    this.fade = isBurst ? 0.022 : (tier.type === 'giant' ? 0.0018 : 0.0025);
     this.rotation = Math.random() * 360;
-    this.rotSpeed = (Math.random() - 0.5) * 1.5;
+    this.rotSpeed = (Math.random() - 0.5) * 2;
   }
 
   update() {
@@ -248,26 +279,35 @@ class GardenParticle {
 }
 
 function spawnGardenParticles() {
-  if (particles.length < 35 && Math.random() < 0.25) {
+  // Banyak partikel aktif sekaligus (hingga 75 buah)
+  if (particles.length < 75 && Math.random() < 0.45) {
     particles.push(new GardenParticle());
   }
 }
 
-function burstFlowers(count = 35) {
+function burstFlowers(count = 45) {
   const cx = window.innerWidth / 2;
   const cy = window.innerHeight / 2;
   for (let i = 0; i < count; i++) {
-    particles.push(new GardenParticle(cx, cy, true));
+    // Variasi ukuran saat meledak dari 10px sampai 38px
+    const burstSize = Math.floor(Math.random() * 28) + 10;
+    particles.push(new GardenParticle(cx, cy, true, null, burstSize));
   }
 }
 
-// Sentuhan di mana saja memicu tebaran kelopak bunga mini
+// Sentuhan / klik di mana saja memicu ledakan bunga aneka ukuran (mikro, sedang, besar)
 window.addEventListener('click', (e) => {
-  for (let i = 0; i < 4; i++) {
-    const p = new GardenParticle(e.clientX, e.clientY, true, Math.random() < 0.5 ? '🌻' : '🌼');
-    p.size = 14;
-    p.fade = 0.03;
-    particles.push(p);
+  // 3 Mikro
+  for (let i = 0; i < 3; i++) {
+    particles.push(new GardenParticle(e.clientX, e.clientY, true, '✨', 10));
+  }
+  // 3 Sedang
+  for (let i = 0; i < 3; i++) {
+    particles.push(new GardenParticle(e.clientX, e.clientY, true, Math.random() < 0.5 ? '🌼' : '🤍', 20));
+  }
+  // 2 Besar
+  for (let i = 0; i < 2; i++) {
+    particles.push(new GardenParticle(e.clientX, e.clientY, true, Math.random() < 0.5 ? '🌻' : '🌹', 34));
   }
 });
 
