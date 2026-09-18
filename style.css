@@ -34,15 +34,19 @@
 
 body {
   background: #62b6e5;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
   font-family: var(--font-pixel-heading);
   color: var(--color-green-dark);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px;
-  position: relative;
-  overflow-x: hidden;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
   user-select: none;
 }
 
@@ -99,40 +103,38 @@ body {
   background: #ffd166;
   border: 4px solid #ffb703;
   box-shadow: 
-    0 0 0 4px rgba(255, 209, 102, 0.45),
-    0 0 0 8px rgba(255, 209, 102, 0.25),
-    0 0 0 14px rgba(255, 209, 102, 0.1);
+    0 0 0 6px rgba(255, 209, 102, 0.3),
+    0 0 0 14px rgba(255, 183, 3, 0.15),
+    0 0 25px rgba(255, 209, 102, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  animation: sunPulse 3.5s infinite ease-in-out alternate;
+  animation: sunPulse 3s infinite alternate ease-in-out;
   z-index: 2;
 }
 
 @keyframes sunPulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 4px rgba(255, 209, 102, 0.45), 0 0 0 8px rgba(255, 209, 102, 0.25); }
-  100% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(255, 209, 102, 0.65), 0 0 0 12px rgba(255, 209, 102, 0.35); }
+  0% { transform: scale(0.96); box-shadow: 0 0 0 4px rgba(255, 209, 102, 0.3); }
+  100% { transform: scale(1.04); box-shadow: 0 0 0 10px rgba(255, 183, 3, 0.25), 0 0 35px rgba(255, 209, 102, 0.7); }
 }
 
 .sun-face {
   filter: drop-shadow(0 2px 0 rgba(0,0,0,0.15));
 }
 
-/* Multi-tier Floating Pixel Clouds */
-.pixel-cloud {
+/* Floating Retro Pixel Clouds */
+.pixel-clouds-layer {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 }
 
-.pixel-cloud.c1 {
-  top: 8%;
-  left: -140px;
-  width: 120px;
-  animation: floatCloud1 45s linear infinite;
-  opacity: 0.95;
-}
-
+.pixel-cloud {
+  position: absolute;
 .pixel-cloud.c2 {
   top: 18%;
   left: -100px;
@@ -237,8 +239,8 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 2;
   overflow: hidden;
@@ -248,80 +250,90 @@ body {
   position: absolute;
   bottom: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .left-corner {
-  left: 12px;
+  left: 10px;
 }
 
 .right-corner {
-  right: 12px;
+  right: 10px;
 }
 
-.pixel-giant-flower {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.corner-plant {
   position: relative;
   transform-origin: bottom center;
+}
+
+.pixel-plant-img {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
+}
+
+.plant-sunflower {
+  width: 96px;
   animation: swayGiant 4s infinite ease-in-out alternate;
 }
 
-.flower-head-giant {
-  font-size: 58px;
-  filter: drop-shadow(0 3px 0 rgba(0, 0, 0, 0.2));
+.plant-dandelion {
+  width: 70px;
+  margin-left: -22px;
+  animation: swayMed 3.2s infinite ease-in-out alternate 0.5s;
 }
 
-.flower-stem-tall {
-  width: 6px;
-  height: 90px;
-  background: #2d6a4f;
-  border-radius: 3px;
+.plant-clover-l {
+  width: 44px;
+  margin-left: -16px;
+  animation: swaySmall 2.8s infinite ease-in-out alternate 1s;
 }
 
-.flower-leaf-left, .flower-leaf-right {
-  position: absolute;
-  font-size: 26px;
+.plant-jasmine {
+  width: 86px;
+  animation: swayGiant 3.8s infinite ease-in-out alternate 0.3s;
 }
-.flower-leaf-left { left: -14px; top: 75px; }
-.flower-leaf-right { right: -14px; top: 75px; }
 
-.pixel-medium-flower {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.plant-rose {
+  width: 74px;
+  margin-right: -20px;
+  animation: swayMed 3.5s infinite ease-in-out alternate 0.8s;
 }
-.dandelion-med { right: -30px; animation: swayMed 3s infinite ease-in-out alternate 0.5s; }
-.rose-med { left: -30px; animation: swayMed 3s infinite ease-in-out alternate 1s; }
 
-.flower-head-med { font-size: 36px; }
-.flower-stem-med { width: 4px; height: 50px; background: #40916c; }
+.plant-clover-r {
+  width: 44px;
+  margin-right: -14px;
+  animation: swaySmall 2.6s infinite ease-in-out alternate 1.2s;
+}
 
 .pixel-mini-creature {
   position: absolute;
-  font-size: 22px;
+  font-size: 20px;
 }
 .bee-mini {
-  top: -20px;
+  top: -24px;
   right: -10px;
   animation: hoverCreature 2.4s infinite ease-in-out;
 }
 .ladybug-mini {
-  bottom: 40px;
+  bottom: 30px;
   left: 0px;
   animation: crawlCreature 3.5s infinite ease-in-out;
 }
 
 @keyframes swayGiant {
-  0% { transform: rotate(-4deg); }
+  0% { transform: rotate(-3deg); }
   100% { transform: rotate(4deg); }
 }
 
 @keyframes swayMed {
+  0% { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+@keyframes swaySmall {
   0% { transform: rotate(-6deg); }
   100% { transform: rotate(6deg); }
 }
@@ -340,12 +352,17 @@ body {
 .flower-garland {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
-.f-micro { font-size: 11px; opacity: 0.85; }
-.f-small { font-size: 16px; }
-.f-med { font-size: 22px; animation: swayFlower 2.5s infinite ease-in-out alternate; }
+.garland-icon {
+  display: inline-block;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+}
+.icon-micro { width: 14px; height: auto; }
+.icon-small { width: 18px; height: auto; }
+.icon-med { width: 24px; height: auto; animation: swayFlower 2.5s infinite ease-in-out alternate; }
 
 /* Top Navigation */
 .top-nav {
@@ -378,12 +395,14 @@ body {
   box-shadow: none;
 }
 
-/* Main Container (Pixel Art Planter Board) */
+/* Main Container (Pixel Art Planter Board) - FIXED 100VH NO SCROLL */
 .game-container {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 480px;
+  height: 94vh;
+  max-height: 640px;
   background-color: #fbf5e2;
   background-image: 
     repeating-linear-gradient(0deg, #f8edcf 0px, #f8edcf 24px, #e8d7ad 24px, #d8bf8c 26px),
@@ -394,12 +413,15 @@ body {
   box-shadow: 
     0 0 0 3px #52b788,
     0 0 0 6px #2d6a4f,
-    0 10px 0 #241407,
-    0 24px 36px rgba(27, 67, 50, 0.35);
-  padding: 18px 16px;
+    0 8px 0 #241407,
+    0 16px 30px rgba(27, 67, 50, 0.4);
+  padding: 10px 14px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  justify-content: space-between;
+  gap: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* 4 Pixel Brass Corner Studs */
@@ -427,10 +449,11 @@ body {
   align-items: center;
   background: 
     repeating-linear-gradient(90deg, #1b4332 0px, #1b4332 8px, #255a42 8px, #255a42 16px);
-  padding: 8px 12px;
+  padding: 6px 10px;
   border: 3px solid #ffb703;
   border-radius: 6px;
-  box-shadow: inset 0 0 0 2px #402816, 0 4px 0 #241407;
+  box-shadow: inset 0 0 0 2px #402816, 0 3px 0 #241407;
+  flex-shrink: 0;
 }
 
 .header-flower-icon {
@@ -447,7 +470,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .game-subtitle {
@@ -464,22 +487,24 @@ body {
   letter-spacing: 1px;
 }
 
-/* Character Stage: Flora */
+/* Character Stage: Flora The Flower Fairy */
 .character-stage {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 4px;
+  padding-top: 2px;
+  margin-bottom: 2px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .fairy-halo {
   position: absolute;
-  top: 15px;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, rgba(255, 209, 102, 0.7) 0%, rgba(255, 255, 255, 0) 70%);
+  top: 10px;
+  width: 115px;
+  height: 115px;
+  background: radial-gradient(circle, rgba(255, 209, 102, 0.75) 0%, rgba(255, 255, 255, 0) 70%);
   border-radius: 50%;
   z-index: 1;
 }
@@ -498,124 +523,109 @@ body {
   100% { transform: scale(0.8) translateY(0) rotate(0deg); opacity: 0.4; }
 }
 
+/* Flora Character Box */
 .character-box {
   position: relative;
   z-index: 2;
-  width: 116px;
-  height: 116px;
+  width: 112px;
+  height: 112px;
   background-color: #f4fdf6;
   background-image: 
-    radial-gradient(circle at 50% 30%, #fffbe6 0%, #d8f3dc 60%, #b7e4c7 100%),
-    linear-gradient(45deg, rgba(45, 106, 79, 0.12) 25%, transparent 25%), 
-    linear-gradient(-45deg, rgba(45, 106, 79, 0.12) 25%, transparent 25%), 
-    linear-gradient(45deg, transparent 75%, rgba(45, 106, 79, 0.12) 75%), 
-    linear-gradient(-45deg, transparent 75%, rgba(45, 106, 79, 0.12) 75%);
-  background-size: 100% 100%, 12px 12px, 12px 12px, 12px 12px, 12px 12px;
-  background-position: 0 0, 0 0, 0 6px, 6px -6px, -6px 0px;
+    radial-gradient(circle at 50% 30%, #fffbe6 0%, #d8f3dc 60%, #b7e4c7 100%);
   border: 4px solid var(--color-wood-dark);
   border-radius: 8px;
   box-shadow: 
     inset 0 0 0 3px #74c69d,
-    0 6px 0 var(--color-wood-shadow);
+    0 5px 0 var(--color-wood-shadow);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: visible;
 }
 
-.pixel-fairy-svg {
-  width: 96px;
-  height: 96px;
-}
-
-/* Fairy Wings Fluttering */
-.fairy-wings {
-  transform-origin: 18px 16px;
-  animation: wingFlutter 0.18s infinite alternate ease-in-out;
-}
-
-@keyframes wingFlutter {
-  0% { transform: scaleX(0.85) scaleY(1); opacity: 0.8; }
-  100% { transform: scaleX(1.1) scaleY(1.05); opacity: 1; }
-}
-
-/* Magic Wand Glow */
-.magic-wand {
-  transform-origin: 26px 28px;
-  animation: waveWand 2s infinite ease-in-out alternate;
-}
-
-@keyframes waveWand {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(10deg); }
-}
-
-/* Layer Base Rules */
-.eye-crying,
-.tears-waterfall,
-.eye-happy,
-.mouth-open,
-.mouth-sad {
+/* 16-Bit Pixel Art Fairy Sprites */
+.pixel-flora-art {
+  width: 108px;
+  height: 108px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
   display: none;
+  filter: drop-shadow(0 4px 6px rgba(27, 67, 50, 0.45));
 }
-.eye-normal,
-.mouth-normal {
+
+/* Fairy Emotional Reaction States */
+.character-box.normal .flora-normal,
+.character-box.talking .flora-normal {
   display: block;
+  animation: floraFloat 2.2s infinite ease-in-out alternate;
 }
 
-/* Talking State */
-.character-box.talking {
-  animation: talkBounce 0.35s infinite ease-in-out alternate;
+.character-box.talking .flora-normal {
+  animation: floraTalk 0.25s infinite ease-in-out alternate;
 }
-.character-box.talking .mouth-open { display: block; }
-.character-box.talking .mouth-normal,
-.character-box.talking .mouth-sad { display: none; }
 
-/* Crying State */
-.character-box.crying {
-  animation: cryShake 0.2s infinite ease-in-out;
-  border-color: #0077b6;
+.character-box.happy .flora-happy {
+  display: block;
+  animation: floraHappyJump 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
 }
-.character-box.crying .eye-normal,
-.character-box.crying .eye-happy,
-.character-box.crying .mouth-normal,
-.character-box.crying .mouth-open { display: none; }
-.character-box.crying .eye-crying,
-.character-box.crying .tears-waterfall,
-.character-box.crying .mouth-sad { display: block; }
 
-/* Happy State */
 .character-box.happy {
-  animation: happyFairyDance 0.5s infinite alternate cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-color: #ffb703;
+  box-shadow: inset 0 0 0 3px #ffd166, 0 5px 0 var(--color-wood-shadow);
 }
-.character-box.happy .eye-normal,
-.character-box.happy .eye-crying,
-.character-box.happy .tears-waterfall,
-.character-box.happy .mouth-sad { display: none; }
-.character-box.happy .eye-happy,
-.character-box.happy .mouth-open { display: block; }
 
-@keyframes happyFairyDance {
-  0% { transform: translateY(0) rotate(-2deg); }
-  100% { transform: translateY(-10px) rotate(2deg); }
+.character-box.crying .flora-crying {
+  display: block;
+  animation: floraCryShake 0.2s infinite ease-in-out alternate;
+}
+
+.character-box.crying {
+  border-color: #0077b6;
+  box-shadow: inset 0 0 0 3px #90e0ef, 0 5px 0 var(--color-wood-shadow);
+}
+
+@keyframes floraFloat {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-6px) scale(1.02); }
+}
+
+@keyframes floraTalk {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-4px) scale(1.04); }
+}
+
+@keyframes floraHappyJump {
+  0% { transform: translateY(2px) scale(0.98); }
+  100% { transform: translateY(-10px) scale(1.05); }
+}
+
+@keyframes floraCryShake {
+  0% { transform: translateX(-3px) translateY(0); }
+  100% { transform: translateX(3px) translateY(2px); }
 }
 
 .character-tag {
-  margin-top: 8px;
+  margin-top: 4px;
   background: var(--color-jasmine-white);
   border: 2px solid var(--color-wood-dark);
   border-radius: 12px;
-  padding: 4px 10px;
+  padding: 3px 8px;
   font-size: 8px;
   color: var(--color-green-dark);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   box-shadow: 0 2px 0 var(--color-wood-shadow);
 }
 
-.status-flower-dot {
-  font-size: 10px;
+.status-flower-img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  image-rendering: pixelated;
   animation: pulseBeat 1.5s infinite;
 }
 
@@ -934,12 +944,25 @@ body {
   transition: width 0.2s ease;
 }
 
-.flower-bud {
+.flower-bud-wrapper {
   position: absolute;
   top: -6px;
   left: 10%;
-  font-size: 20px;
+  width: 28px;
+  height: 28px;
   transition: left 0.2s ease, transform 0.2s ease;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pixel-bud-art {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 .slider-container { width: 100%; }
@@ -965,10 +988,10 @@ body {
 
 .meter-fun-badge {
   font-family: var(--font-pixel-dialogue);
-  font-size: 22px;
+  font-size: 20px;
   color: var(--color-green-dark);
   background: #fdfae5;
-  padding: 6px 12px;
+  padding: 4px 10px;
   border: 2px dashed #ffb703;
   border-radius: 6px;
   box-shadow: 0 2px 0 rgba(0,0,0,0.1);
@@ -976,16 +999,195 @@ body {
   width: 100%;
 }
 
-/* Step 5: Victory Garden Card */
-.victory-garden-card {
+.meter-btns-row {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  align-items: center;
+  gap: 6px;
   width: 100%;
+  align-items: center;
 }
 
-/* Pixel Bucin Certificate (Royal Botanical Scroll) */
+/* Step 5: Botanical Love Letter Envelope */
+.envelope-action-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  padding: 2px 0;
+}
+
+.envelope-interactive-box {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.envelope-interactive-box:hover {
+  transform: scale(1.08) rotate(-1deg);
+}
+
+.pixel-envelope-art {
+  width: 135px;
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 6px 14px rgba(27, 67, 50, 0.4));
+  transition: transform 0.2s ease;
+}
+
+.envelope-sparkle-halo {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 18px;
+  animation: pulseBeat 1.2s infinite;
+}
+
+.envelope-hint-text {
+  font-family: var(--font-pixel-dialogue);
+  font-size: 18px;
+  color: var(--color-wood-dark);
+  text-align: center;
+  line-height: 1.25;
+}
+
+.envelope-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Step 6: Pap Action Box (Final Quest) */
+.pap-action-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  background-color: #fffdf5;
+  background-image: 
+    radial-gradient(#eed9a4 12%, transparent 13%),
+    repeating-linear-gradient(45deg, rgba(45, 106, 79, 0.05) 0, rgba(45, 106, 79, 0.05) 10px, transparent 10px, transparent 20px);
+  border: 4px solid var(--color-wood-dark);
+  border-radius: 6px;
+  box-shadow: 
+    0 0 0 2px #ffb703,
+    0 4px 0 var(--color-wood-shadow);
+  padding: 12px 10px;
+}
+
+.pap-bouquet-center {
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.pap-bouquet-art {
+  width: 72px;
+  height: auto;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 6px 12px rgba(27, 67, 50, 0.45));
+  animation: bouquetGlow 2.5s infinite alternate;
+}
+
+@keyframes bouquetGlow {
+  0% { transform: scale(0.97); }
+  100% { transform: scale(1.05); }
+}
+
+.pap-quest-title {
+  font-size: 8px;
+  color: var(--color-green-forest);
+  text-align: center;
+}
+
+.pap-quest-desc {
+  font-family: var(--font-pixel-dialogue);
+  font-size: 19px;
+  text-align: center;
+  color: var(--color-wood-dark);
+}
+
+/* Footer (Multi-Height Pixel Botanical Row) */
+.game-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.pixel-botanical-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  overflow: hidden;
+  padding: 2px 0;
+  height: 32px;
+}
+
+.bot-img-item {
+  display: inline-block;
+  transform-origin: bottom center;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.3));
+  animation: gentleSway 3s infinite ease-in-out alternate;
+}
+
+.bot-img-item:nth-child(2n) { animation-delay: 0.5s; }
+.bot-img-item:nth-child(3n) { animation-delay: 1.2s; }
+.bot-img-item:nth-child(4n) { animation-delay: 1.8s; }
+
+.bot-img-item.size-micro { width: 14px; }
+.bot-img-item.size-small { width: 18px; }
+.bot-img-item.size-med { width: 24px; }
+.bot-img-item.size-large { width: 30px; }
+.bot-img-item.size-giant { width: 36px; }
+
+/* Pixel Bucin Certificate (Inside Modal Popup) */
+.pixel-certificate-modal {
+  max-width: 440px;
+  width: 95%;
+  max-height: 92vh;
+  overflow-y: auto;
+  background-color: #fbf5e2;
+  background-image: 
+    repeating-linear-gradient(0deg, #f8edcf 0px, #f8edcf 24px, #e8d7ad 24px, #d8bf8c 26px);
+  border: 5px solid var(--color-wood-dark);
+  border-radius: 8px;
+  box-shadow: 
+    0 0 0 3px #ffb703,
+    0 0 0 6px #2d6a4f,
+    0 12px 0 var(--color-wood-shadow),
+    0 24px 44px rgba(0, 0, 0, 0.7);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.cert-modal-header {
+  background: linear-gradient(180deg, #2d6a4f 0%, #1b4332 100%);
+  padding: 8px 12px;
+}
+
+.cert-modal-body {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
 .pixel-certificate {
   width: 100%;
   background-color: #fffdf5;
@@ -998,24 +1200,24 @@ body {
   box-shadow: 
     0 0 0 3px #ffb703,
     0 0 0 5px #2d6a4f,
-    0 8px 0 var(--color-wood-shadow);
-  padding: 6px;
+    0 6px 0 var(--color-wood-shadow);
+  padding: 4px;
 }
 
 .cert-border-outer {
   border: 2px solid var(--color-sunflower-gold);
   background: rgba(254, 250, 224, 0.5);
-  padding: 6px;
+  padding: 4px;
 }
 
 .cert-border-inner {
   border: 2px dashed var(--color-green-forest);
   background: #ffffff;
-  padding: 12px 10px;
+  padding: 10px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   text-align: center;
   box-shadow: inset 0 0 0 2px #d8f3dc;
 }
@@ -1026,24 +1228,27 @@ body {
   gap: 6px;
 }
 
-.cert-crown {
-  font-size: 16px;
+.cert-crown-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  image-rendering: pixelated;
 }
 
 .cert-title {
-  font-size: 9px;
+  font-size: 8px;
   color: var(--color-green-forest);
   letter-spacing: 0.5px;
 }
 
 .cert-subtitle {
   font-family: var(--font-pixel-dialogue);
-  font-size: 18px;
+  font-size: 16px;
   color: #555555;
 }
 
 .cert-her-name {
-  font-size: 13px;
+  font-size: 12px;
   color: #b37400;
   border-bottom: 2px solid var(--color-green-mint);
   padding-bottom: 2px;
@@ -1051,116 +1256,73 @@ body {
 
 .cert-desc {
   font-family: var(--font-pixel-dialogue);
-  font-size: 18px;
-  line-height: 1.35;
+  font-size: 17px;
+  line-height: 1.3;
   color: var(--color-wood-dark);
 }
 
 .cert-flowers-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
   justify-content: center;
   margin-top: 2px;
 }
 
 .f-pill {
   font-family: var(--font-pixel-dialogue);
-  font-size: 16px;
+  font-size: 15px;
   background: #f4fdf6;
   border: 2px solid var(--color-green-mint);
   border-radius: 12px;
-  padding: 2px 8px;
+  padding: 2px 6px;
   color: var(--color-green-dark);
+  display: inline-flex;
+  align-items: center;
+}
+
+.cert-pill-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  vertical-align: middle;
+  margin-right: 4px;
 }
 
 .cert-seal-row {
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .cert-seal {
   background: #ffecb3;
   border: 2px solid var(--color-wood-dark);
   border-radius: 4px;
-  padding: 3px 8px;
+  padding: 4px 8px;
   font-size: 7px;
   color: #b71c1c;
   display: flex;
   flex-direction: column;
   gap: 2px;
   font-weight: bold;
-}
-
-/* Pap Action Box (Pixel Airmail Delivery Notice) */
-.pap-action-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   align-items: center;
-  width: 100%;
-  background-color: #fffdf5;
-  background-image: 
-    radial-gradient(#eed9a4 12%, transparent 13%),
-    repeating-linear-gradient(45deg, rgba(45, 106, 79, 0.05) 0, rgba(45, 106, 79, 0.05) 10px, transparent 10px, transparent 20px);
-  border: 4px solid var(--color-wood-dark);
-  border-radius: 6px;
-  box-shadow: 
-    0 0 0 2px #ffb703,
-    0 5px 0 var(--color-wood-shadow);
-  padding: 16px 12px;
 }
 
-.camera-sparkle {
-  font-size: 26px;
-  animation: pulseBeat 1.5s infinite;
+.cert-seal-bouquet {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  display: block;
+  margin-bottom: 2px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
-.pap-quest-title {
-  font-size: 8px;
-  color: var(--color-green-forest);
-}
-
-.pap-quest-desc {
-  font-family: var(--font-pixel-dialogue);
-  font-size: 20px;
-  text-align: center;
-  color: var(--color-wood-dark);
-}
-
-/* Footer */
-.game-footer {
+.cert-modal-footer {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-top: 4px;
-}
-
-/* Multi-Height Botanical Strip */
-.pixel-botanical-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 8px;
   width: 100%;
-  overflow: hidden;
-  padding: 4px 0;
 }
-
-.bot-item {
-  display: inline-block;
-  transform-origin: bottom center;
-  animation: gentleSway 3s infinite ease-in-out alternate;
-}
-
-.bot-item:nth-child(2n) { animation-delay: 0.5s; }
-.bot-item:nth-child(3n) { animation-delay: 1.2s; }
-.bot-item:nth-child(4n) { animation-delay: 1.8s; }
-
-.size-micro { font-size: 13px; opacity: 0.85; }
-.size-small { font-size: 17px; }
-.size-med { font-size: 24px; }
-.size-large { font-size: 30px; }
-.size-giant { font-size: 38px; filter: drop-shadow(0 2px 0 var(--color-wood-shadow)); }
 
 @keyframes gentleSway {
   0% { transform: rotate(-5deg); }
@@ -1312,12 +1474,39 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Responsive */
-@media (max-width: 420px) {
-  .game-container { padding: 12px; }
+/* Mobile & Small Screen Zero-Scroll Rules */
+@media (max-width: 480px) {
+  body { padding: 4px; }
+  .game-container {
+    width: 100%;
+    height: 98vh;
+    max-height: 98vh;
+    padding: 8px 10px;
+    gap: 6px;
+  }
   .game-title { font-size: 10px; }
-  .character-box { width: 100px; height: 100px; }
-  .pixel-fairy-svg { width: 84px; height: 84px; }
-  .dialogue-text { font-size: 20px; }
+  .game-subtitle { font-size: 6px; }
+  .character-box { width: 96px; height: 96px; }
+  .pixel-flora-art { width: 90px; height: 90px; }
+  .dialogue-content { min-height: 44px; }
+  .dialogue-text { font-size: 19px; }
   .pixel-btn { font-size: 9px; padding: 10px 12px; }
+  .pixel-envelope-art { width: 115px; }
+  .pap-bouquet-art { width: 60px; }
+  .plant-sunflower { width: 68px; }
+  .plant-jasmine { width: 60px; }
+  .plant-dandelion { width: 48px; }
+  .plant-rose { width: 50px; }
+  .plant-clover-l, .plant-clover-r { display: none; }
+}
+
+@media (max-height: 620px) {
+  .game-container { height: 99vh; max-height: 99vh; padding: 6px 8px; gap: 4px; }
+  .character-box { width: 82px; height: 82px; }
+  .pixel-flora-art { width: 78px; height: 78px; }
+  .dialogue-content { min-height: 38px; }
+  .dialogue-text { font-size: 17px; }
+  .game-header { padding: 4px 8px; }
+  .pixel-botanical-row { height: 24px; }
+  .pixel-envelope-art { width: 100px; }
 }

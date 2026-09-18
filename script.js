@@ -211,18 +211,33 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
+// Preload 5 Authentic 16-Bit Pixel Art Flower Sprites
+const FLOWER_SPRITE_URLS = [
+  'assets/flower_sunflower.png',
+  'assets/flower_jasmine.png',
+  'assets/flower_rose.png',
+  'assets/flower_dandelion.png',
+  'assets/flower_clover.png'
+];
+
+const FLOWER_IMAGES = FLOWER_SPRITE_URLS.map(src => {
+  const img = new Image();
+  img.src = src;
+  return img;
+});
+
 // Ragam flora & fauna taman dengan 5 tier ukuran
 const FLOWER_TIERS = [
-  // Micro tier (6px - 10px)
-  { type: 'micro', chars: ['✨', '🌾', '🌱', '🌿'], minSize: 8, maxSize: 12, speed: 0.6, countWeight: 0.35 },
-  // Small tier (14px - 18px)
-  { type: 'small', chars: ['🤍', '🍀', '🍃', '🌼', '🍄'], minSize: 14, maxSize: 18, speed: 1.0, countWeight: 0.30 },
-  // Medium tier (22px - 28px)
-  { type: 'medium', chars: ['🌻', '🌹', '🌼', '🤍', '🐝'], minSize: 22, maxSize: 28, speed: 1.3, countWeight: 0.20 },
-  // Large tier (32px - 42px)
-  { type: 'large', chars: ['🌻', '🦋', '🌹', '🌼'], minSize: 32, maxSize: 42, speed: 1.6, countWeight: 0.12 },
-  // Giant Foreground tier (48px - 60px)
-  { type: 'giant', chars: ['🌻', '🌹', '🤍'], minSize: 48, maxSize: 60, speed: 2.0, countWeight: 0.03 }
+  // Micro tier (10px - 14px)
+  { type: 'micro', minSize: 10, maxSize: 14, speed: 0.6, countWeight: 0.35 },
+  // Small tier (16px - 22px)
+  { type: 'small', minSize: 16, maxSize: 22, speed: 0.9, countWeight: 0.30 },
+  // Medium tier (24px - 32px)
+  { type: 'medium', minSize: 24, maxSize: 32, speed: 1.2, countWeight: 0.20 },
+  // Large tier (34px - 44px)
+  { type: 'large', minSize: 34, maxSize: 44, speed: 1.5, countWeight: 0.12 },
+  // Giant Foreground tier (48px - 58px)
+  { type: 'giant', minSize: 48, maxSize: 58, speed: 1.8, countWeight: 0.03 }
 ];
 
 function getRandomTier() {
@@ -236,11 +251,13 @@ function getRandomTier() {
 }
 
 class GardenParticle {
-  constructor(x, y, isBurst = false, customChar = null, customSize = null) {
+  constructor(x, y, isBurst = false, customSize = null, customImgIdx = null) {
     const tier = getRandomTier();
     this.x = x !== undefined ? x : Math.random() * canvas.width;
     this.y = y !== undefined ? y : (isBurst ? canvas.height / 2 : -40);
-    this.char = customChar || tier.chars[Math.floor(Math.random() * tier.chars.length)];
+    
+    const imgIdx = customImgIdx !== null ? customImgIdx : Math.floor(Math.random() * FLOWER_IMAGES.length);
+    this.img = FLOWER_IMAGES[imgIdx];
     
     if (customSize) {
       this.size = customSize;
@@ -250,12 +267,12 @@ class GardenParticle {
         : Math.floor(Math.random() * (tier.maxSize - tier.minSize)) + tier.minSize;
     }
 
-    this.speedY = isBurst ? (Math.random() * 10 - 5) : (Math.random() * 1.2 + tier.speed);
-    this.speedX = isBurst ? (Math.random() * 10 - 5) : (Math.sin(Math.random() * 10) * 1.2);
+    this.speedY = isBurst ? (Math.random() * 10 - 5) : (Math.random() * 1.1 + tier.speed);
+    this.speedX = isBurst ? (Math.random() * 10 - 5) : (Math.sin(Math.random() * 10) * 1.1);
     this.opacity = 1;
-    this.fade = isBurst ? 0.022 : (tier.type === 'giant' ? 0.0018 : 0.0025);
+    this.fade = isBurst ? 0.022 : (tier.type === 'giant' ? 0.0016 : 0.0022);
     this.rotation = Math.random() * 360;
-    this.rotSpeed = (Math.random() - 0.5) * 2;
+    this.rotSpeed = (Math.random() - 0.5) * 1.8;
   }
 
   update() {
@@ -268,46 +285,39 @@ class GardenParticle {
   draw() {
     ctx.save();
     ctx.globalAlpha = Math.max(0, this.opacity);
-    ctx.font = `${this.size}px monospace`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
     ctx.translate(this.x, this.y);
     ctx.rotate((this.rotation * Math.PI) / 180);
-    ctx.fillText(this.char, 0, 0);
+    if (this.img && this.img.complete && this.img.naturalWidth > 0) {
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(this.img, -this.size / 2, -this.size / 2, this.size, this.size);
+    } else {
+      ctx.fillStyle = '#ffb703';
+      ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+    }
     ctx.restore();
   }
 }
 
 function spawnGardenParticles() {
-  // Banyak partikel aktif sekaligus (hingga 75 buah)
-  if (particles.length < 75 && Math.random() < 0.45) {
+  if (particles.length < 65 && Math.random() < 0.45) {
     particles.push(new GardenParticle());
   }
 }
 
-function burstFlowers(count = 45) {
+function burstFlowers(count = 35) {
   const cx = window.innerWidth / 2;
   const cy = window.innerHeight / 2;
   for (let i = 0; i < count; i++) {
-    // Variasi ukuran saat meledak dari 10px sampai 38px
-    const burstSize = Math.floor(Math.random() * 28) + 10;
-    particles.push(new GardenParticle(cx, cy, true, null, burstSize));
+    const burstSize = Math.floor(Math.random() * 24) + 14;
+    particles.push(new GardenParticle(cx, cy, true, burstSize));
   }
 }
 
-// Sentuhan / klik di mana saja memicu ledakan bunga aneka ukuran (mikro, sedang, besar)
+// Sentuhan / klik di mana saja memicu ledakan bunga pixel art
 window.addEventListener('click', (e) => {
-  // 3 Mikro
-  for (let i = 0; i < 3; i++) {
-    particles.push(new GardenParticle(e.clientX, e.clientY, true, '✨', 10));
-  }
-  // 3 Sedang
-  for (let i = 0; i < 3; i++) {
-    particles.push(new GardenParticle(e.clientX, e.clientY, true, Math.random() < 0.5 ? '🌼' : '🤍', 20));
-  }
-  // 2 Besar
-  for (let i = 0; i < 2; i++) {
-    particles.push(new GardenParticle(e.clientX, e.clientY, true, Math.random() < 0.5 ? '🌻' : '🌹', 34));
+  for (let i = 0; i < 4; i++) {
+    const pSize = Math.floor(Math.random() * 18) + 12;
+    particles.push(new GardenParticle(e.clientX, e.clientY, true, pSize));
   }
 });
 
@@ -599,24 +609,28 @@ function updateSliderDesc(val) {
 
   const percent = Math.min(100, Math.round((state.loveScore / 1000) * 100));
   vineFill.style.width = `${percent}%`;
-  flowerBud.style.left = `calc(${percent}% - 12px)`;
+  
+  const budWrapper = flowerBud ? flowerBud.parentElement : null;
+  if (budWrapper) {
+    budWrapper.style.left = `calc(${percent}% - 14px)`;
+  }
 
   if (state.loveScore < 300) {
     meterValText.textContent = `${state.loveScore}%`;
     state.loveDescription = "Mekar harum seperti bunga melati! 🤍";
-    flowerBud.textContent = '🌼';
+    if (flowerBud) flowerBud.src = 'assets/flower_dandelion.png';
   } else if (state.loveScore < 600) {
     meterValText.textContent = `${state.loveScore}%`;
     state.loveDescription = "Sebesar padang bunga matahari semesta! 🌻✨";
-    flowerBud.textContent = '🌸';
+    if (flowerBud) flowerBud.src = 'assets/flower_jasmine.png';
   } else if (state.loveScore < 950) {
     meterValText.textContent = `${state.loveScore}%`;
     state.loveDescription = "Abadi seperti mawar terindah! 🌹💕";
-    flowerBud.textContent = '🌹';
+    if (flowerBud) flowerBud.src = 'assets/flower_rose.png';
   } else {
     meterValText.textContent = `1000% (MAX!)`;
     state.loveDescription = "TAK TERHINGGA SAMPAI AKHIR HAYAT!! 🌻💥💖";
-    flowerBud.textContent = '🌻';
+    if (flowerBud) flowerBud.src = 'assets/flower_bouquet.png';
   }
   meterDescBadge.textContent = `"${state.loveDescription}"`;
 }
@@ -633,8 +647,16 @@ btnMaxLove.addEventListener('click', () => {
 });
 
 // ============================================================
-// 7. STEP 5 & 6: SERTIFIKAT & WHATSAPP PAP QUEST
+// 7. STEP 5 & 6: AMPLOP SURAT, SERTIFIKAT MODAL & PAP QUEST
 // ============================================================
+
+const envelopeWrapper = document.getElementById('envelopeWrapper');
+const envelopeImg = document.getElementById('envelopeImg');
+const btnOpenEnvelope = document.getElementById('btnOpenEnvelope');
+const btnStep5Next = document.getElementById('btnStep5Next');
+const certModal = document.getElementById('certModal');
+const btnCloseCertModal = document.getElementById('btnCloseCertModal');
+const btnCertModalNext = document.getElementById('btnCertModalNext');
 
 function setupCertificateStep() {
   const her = (state.herName || 'Putri Bunga').trim();
@@ -654,6 +676,58 @@ function setupCertificateStep() {
   }
 }
 
+function openCertModal() {
+  initAudio();
+  playFairyChime();
+  playGardenFanfare();
+  burstFlowers(35);
+
+  if (envelopeImg) {
+    envelopeImg.src = 'assets/envelope_open.png';
+    envelopeImg.style.transform = 'scale(1.1) rotate(2deg)';
+    setTimeout(() => {
+      if (envelopeImg) envelopeImg.style.transform = 'scale(1) rotate(0deg)';
+    }, 280);
+  }
+
+  if (btnStep5Next) btnStep5Next.style.display = 'inline-block';
+  if (btnOpenEnvelope) btnOpenEnvelope.innerHTML = '📜 BUKA SERTIFIKAT LAGI ✨';
+
+  setupCertificateStep();
+
+  setTimeout(() => {
+    if (certModal) certModal.classList.add('open');
+  }, 300);
+}
+
+if (envelopeWrapper) envelopeWrapper.addEventListener('click', openCertModal);
+if (btnOpenEnvelope) btnOpenEnvelope.addEventListener('click', openCertModal);
+
+if (btnCloseCertModal) {
+  btnCloseCertModal.addEventListener('click', () => {
+    if (certModal) certModal.classList.remove('open');
+  });
+}
+
+if (btnCertModalNext) {
+  btnCertModalNext.addEventListener('click', () => {
+    if (certModal) certModal.classList.remove('open');
+    goToStep(6);
+  });
+}
+
+if (certModal) {
+  certModal.addEventListener('click', (e) => {
+    if (e.target === certModal) certModal.classList.remove('open');
+  });
+}
+
+if (btnStep5Next) {
+  btnStep5Next.addEventListener('click', () => {
+    goToStep(6);
+  });
+}
+
 function setupPapStep() {
   const his = (state.hisName || state.config.defaultHisName || 'Pangerannya').trim();
   const papQuestDesc = document.getElementById('papQuestDesc');
@@ -664,11 +738,7 @@ function setupPapStep() {
   }
 }
 
-function setupFinalStep() {
-  setupCertificateStep();
-  setupPapStep();
-}
-
+// Tombol Kirim Pap & Laporan Bunga ke WhatsApp
 document.getElementById('btnSendPap').addEventListener('click', () => {
   initAudio();
   playGardenFanfare();
@@ -725,7 +795,7 @@ Sesuai perintah Peri Flora, ini PAP paling manis yang kamu suka spesial buat kam
 // Mulai Game (Otomatis nyalakan BGM)
 document.getElementById('btnStartGame').addEventListener('click', () => {
   initAudio();
-  startAutoPlayBgm(); // Auto play lagu padang rumput 8-bit
+  startAutoPlayBgm();
   playFairyChime();
   burstFlowers(20);
   goToStep(1);
@@ -769,23 +839,12 @@ document.getElementById('inputHisName').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') document.getElementById('btnStep2Next').click();
 });
 
-// Step 4 -> 5 (Love Meter -> Sertifikat)
+// Step 4 -> 5 (Love Meter -> Amplop Surat)
 document.getElementById('btnStep4Next').addEventListener('click', () => {
   initAudio();
   playFairyChime();
   goToStep(5);
 });
-
-// Step 5 -> 6 (Sertifikat -> Quest Pap Terakhir)
-const btnStep5Next = document.getElementById('btnStep5Next');
-if (btnStep5Next) {
-  btnStep5Next.addEventListener('click', () => {
-    initAudio();
-    playGardenFanfare();
-    burstFlowers(35);
-    goToStep(6);
-  });
-}
 
 // Restart Game
 document.getElementById('btnRestartGame').addEventListener('click', () => {

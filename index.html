@@ -61,30 +61,30 @@
 
   <!-- Multi-Size Botanical Pixel Art Scenery (Background Layer) -->
   <div class="botanical-scenery">
-    <!-- Left Garden Corner: Giant Sunflower & Dandelion -->
+    <!-- Left Garden Corner: Giant Sunflower, Dandelion, Clover -->
     <div class="garden-corner left-corner">
-      <div class="pixel-giant-flower sunflower-giant" title="Bunga Matahari Raksasa 🌻">
-        <span class="flower-head-giant">🌻</span>
-        <div class="flower-stem-tall"></div>
-        <div class="flower-leaf-left">🍃</div>
+      <div class="corner-plant plant-sunflower" title="Bunga Matahari Raksasa">
+        <img class="pixel-plant-img img-sunflower" src="assets/flower_sunflower.png" alt="Sunflower">
       </div>
-      <div class="pixel-medium-flower dandelion-med">
-        <span class="flower-head-med">🌼</span>
-        <div class="flower-stem-med"></div>
+      <div class="corner-plant plant-dandelion" title="Dandelion">
+        <img class="pixel-plant-img img-dandelion" src="assets/flower_dandelion.png" alt="Dandelion">
+      </div>
+      <div class="corner-plant plant-clover-l" title="Semanggi">
+        <img class="pixel-plant-img img-clover" src="assets/flower_clover.png" alt="Clover">
       </div>
       <div class="pixel-mini-creature bee-mini">🐝</div>
     </div>
 
-    <!-- Right Garden Corner: Giant Jasmine & Rose -->
+    <!-- Right Garden Corner: Giant Jasmine, Rose, Clover -->
     <div class="garden-corner right-corner">
-      <div class="pixel-giant-flower jasmine-giant" title="Bunga Melati Putih 🤍">
-        <span class="flower-head-giant">🤍</span>
-        <div class="flower-stem-tall"></div>
-        <div class="flower-leaf-right">🌿</div>
+      <div class="corner-plant plant-jasmine" title="Bunga Melati Putih">
+        <img class="pixel-plant-img img-jasmine" src="assets/flower_jasmine.png" alt="Melati">
       </div>
-      <div class="pixel-medium-flower rose-med">
-        <span class="flower-head-med">🌹</span>
-        <div class="flower-stem-med"></div>
+      <div class="corner-plant plant-rose" title="Mawar Merah">
+        <img class="pixel-plant-img img-rose" src="assets/flower_rose.png" alt="Rose">
+      </div>
+      <div class="corner-plant plant-clover-r" title="Semanggi">
+        <img class="pixel-plant-img img-clover" src="assets/flower_clover.png" alt="Clover">
       </div>
       <div class="pixel-mini-creature ladybug-mini">🐞</div>
     </div>
@@ -111,18 +111,18 @@
     <!-- Top Header Banner with Multi-Sized Floral Garland -->
     <header class="game-header">
       <div class="flower-garland left-garland">
-        <span class="f-micro">🌿</span>
-        <span class="f-small">🌼</span>
-        <span class="f-med">🌻</span>
+        <img class="garland-icon icon-micro" src="assets/flower_clover.png" alt="Clover">
+        <img class="garland-icon icon-small" src="assets/flower_dandelion.png" alt="Dandelion">
+        <img class="garland-icon icon-med" src="assets/flower_sunflower.png" alt="Sunflower">
       </div>
       <div class="header-titles">
         <span class="game-subtitle">★ SECRET GARDEN ADVENTURE ★</span>
         <h1 class="game-title">TAMAN BUNGA CINTA</h1>
       </div>
       <div class="flower-garland right-garland">
-        <span class="f-med">🌻</span>
-        <span class="f-small">🤍</span>
-        <span class="f-micro">🌹</span>
+        <img class="garland-icon icon-med" src="assets/flower_sunflower.png" alt="Sunflower">
+        <img class="garland-icon icon-small" src="assets/flower_jasmine.png" alt="Melati">
+        <img class="garland-icon icon-micro" src="assets/flower_rose.png" alt="Rose">
       </div>
     </header>
 
@@ -136,107 +136,16 @@
         <span class="pixel-bfly b2">✨</span>
       </div>
 
-      <!-- Flora Sprite Box -->
+      <!-- Flora Sprite Box with Real 16-Bit Pixel Art Sprites -->
       <div id="characterSprite" class="character-box normal">
-        <!-- SVG Pixel Flower Fairy -->
-        <svg id="floraSvg" class="pixel-fairy-svg" viewBox="0 0 36 36">
-          <!-- Translucent Fluttering Fairy Wings -->
-          <g class="fairy-wings" id="fairyWings">
-            <!-- Left Wing -->
-            <polygon points="4,10 12,12 12,20 4,16" fill="#caf0f8" opacity="0.85" />
-            <polygon points="2,14 10,16 10,22 2,18" fill="#90e0ef" opacity="0.7" />
-            <rect x="6" y="12" width="2" height="2" fill="#ffffff" />
-            <!-- Right Wing -->
-            <polygon points="32,10 24,12 24,20 32,16" fill="#caf0f8" opacity="0.85" />
-            <polygon points="34,14 26,16 26,22 34,18" fill="#90e0ef" opacity="0.7" />
-            <rect x="28" y="12" width="2" height="2" fill="#ffffff" />
-          </g>
-
-          <!-- Golden Hair -->
-          <rect x="10" y="6" width="16" height="13" fill="#ffb703" />
-          <rect x="8" y="10" width="20" height="12" fill="#ffb703" />
-          <rect x="7" y="14" width="4" height="10" fill="#f4a261" />
-          <rect x="25" y="14" width="4" height="10" fill="#f4a261" />
-
-          <!-- Flower Crown (Melati, Mawar, Dandelion, Sunflower) -->
-          <g class="flower-crown" id="flowerCrown">
-            <rect x="9" y="8" width="18" height="2" fill="#2d6a4f" />
-            <!-- Red Rose -->
-            <rect x="10" y="6" width="3" height="3" fill="#e63946" />
-            <rect x="11" y="7" width="1" height="1" fill="#ff758f" />
-            <!-- White Jasmine (Melati) -->
-            <rect x="14" y="5" width="3" height="3" fill="#ffffff" />
-            <rect x="15" y="6" width="1" height="1" fill="#ffeaa7" />
-            <!-- Yellow Sunflower -->
-            <rect x="19" y="5" width="4" height="4" fill="#ffb703" />
-            <rect x="20" y="6" width="2" height="2" fill="#582f0e" />
-            <!-- Dandelion Fluff -->
-            <rect x="24" y="6" width="3" height="3" fill="#fefae0" />
-          </g>
-
-          <!-- Face -->
-          <rect x="11" y="12" width="14" height="11" fill="#ffe5d9" />
-          <path d="M11 11 h14 v1 h-14 z M10 12 h1 v11 h-1 z M25 12 h1 v11 h-1 z M12 23 h12 v1 h-12 z" fill="#2d6a4f" opacity="0.7" />
-
-          <!-- Cheeks Blush (Peachy Soft) -->
-          <rect class="blush-pixel" x="11" y="18" width="3" height="2" fill="#f4a261" />
-          <rect class="blush-pixel" x="22" y="18" width="3" height="2" fill="#f4a261" />
-
-          <!-- Eyes Group -->
-          <g id="fairyEyes">
-            <!-- Normal Eyes -->
-            <g class="eye-normal">
-              <rect x="13" y="15" width="2" height="3" fill="#1b4332" />
-              <rect x="21" y="15" width="2" height="3" fill="#1b4332" />
-              <rect x="13" y="15" width="1" height="1" fill="#ffffff" />
-              <rect x="21" y="15" width="1" height="1" fill="#ffffff" />
-            </g>
-            <!-- Crying Eyes (Waterfall Tears) -->
-            <g class="eye-crying">
-              <path d="M12 16 h4 v2 h-4 z M20 16 h4 v2 h-4 z" fill="#1b4332" />
-              <g class="tears-waterfall">
-                <rect x="13" y="18" width="2" height="12" fill="#00b4d8" />
-                <rect x="21" y="18" width="2" height="12" fill="#00b4d8" />
-                <rect x="12" y="20" width="1" height="6" fill="#90e0ef" />
-                <rect x="23" y="20" width="1" height="6" fill="#90e0ef" />
-              </g>
-            </g>
-            <!-- Happy Sparkling Eyes -->
-            <g class="eye-happy">
-              <path d="M12 16 h1 v-1 h2 v1 h1 v1 h-4 z" fill="#2d6a4f" />
-              <path d="M20 16 h1 v-1 h2 v1 h1 v1 h-4 z" fill="#2d6a4f" />
-              <rect x="14" y="17" width="1" height="1" fill="#ffb703" />
-              <rect x="22" y="17" width="1" height="1" fill="#ffb703" />
-            </g>
-          </g>
-
-          <!-- Mouth -->
-          <g id="fairyMouth">
-            <rect class="mouth-normal" x="17" y="20" width="2" height="1" fill="#d90429" />
-            <rect class="mouth-open" x="16" y="20" width="4" height="2" fill="#e63946" />
-            <path class="mouth-sad" d="M16 21 h4 v1 h-4 z M15 22 h1 v1 h-1 z M20 22 h1 v1 h-1 z" fill="#1b4332" />
-          </g>
-
-          <!-- Green Leaf Fairy Dress -->
-          <polygon points="13,23 23,23 26,32 10,32" fill="#52b788" />
-          <polygon points="15,23 21,23 24,31 12,31" fill="#74c69d" />
-          <!-- Sunflower Belt -->
-          <rect x="12" y="25" width="12" height="2" fill="#ffb703" />
-          <rect x="17" y="24" width="2" height="4" fill="#582f0e" />
-
-          <!-- Magic Flower Wand -->
-          <g class="magic-wand" id="magicWand">
-            <line x1="26" y1="28" x2="31" y2="15" stroke="#7f4f24" stroke-width="1.5" />
-            <!-- Glowing Wand Star Flower -->
-            <polygon points="31,12 33,14 31,16 29,14" fill="#ffd166" />
-            <rect x="30" y="13" width="2" height="2" fill="#ffffff" />
-          </g>
-        </svg>
+        <img id="floraNormal" class="pixel-flora-art flora-normal" src="assets/fairy_normal.png" alt="Flora Normal">
+        <img id="floraHappy" class="pixel-flora-art flora-happy" src="assets/fairy_happy.png" alt="Flora Happy">
+        <img id="floraCrying" class="pixel-flora-art flora-crying" src="assets/fairy_crying.png" alt="Flora Crying">
       </div>
 
       <!-- Status Tag -->
       <div class="character-tag">
-        <span class="status-flower-dot">🌻</span>
+        <img class="status-flower-img" src="assets/flower_sunflower.png" alt="Flower">
         <span id="characterMood">Flora Peri Taman Bunga 🌿</span>
       </div>
     </section>
@@ -270,6 +179,7 @@
         <!-- STEP 0: START SCREEN -->
         <div id="step0" class="step-view active">
           <div class="start-flower-badge">
+            <img class="badge-bouquet-img" src="assets/flower_bouquet.png" alt="Buket Bunga">
             <span>🌿 EDISI TAMAN RAHASIA 🌿</span>
           </div>
           <button id="btnStartGame" class="pixel-btn primary pulse-btn">
@@ -323,7 +233,9 @@
             <!-- Garden Vine Growth Bar -->
             <div class="garden-vine-frame">
               <div class="vine-fill" id="vineFill"></div>
-              <div class="flower-bud" id="flowerBud">🌼</div>
+              <div class="flower-bud-wrapper">
+                <img id="flowerBud" class="pixel-bud-art" src="assets/flower_dandelion.png" alt="Kuncup Bunga">
+              </div>
             </div>
 
             <div class="slider-container">
@@ -334,78 +246,54 @@
               "Mekar harum seperti melati!" 🤍
             </div>
 
-            <button id="btnMaxLove" class="pixel-btn secondary mini-btn">
-              🌻 MEKARKAN SAMPAI MAX 1000%! 🚀
-            </button>
+            <div class="meter-btns-row">
+              <button id="btnMaxLove" class="pixel-btn secondary mini-btn">
+                🌻 MEKARKAN SAMPAI MAX 1000%! 🚀
+              </button>
+              <button id="btnStep4Next" class="pixel-btn primary">
+                Kunci Bunga Cintaku! 🔒💐
+              </button>
+            </div>
           </div>
-          <button id="btnStep4Next" class="pixel-btn primary">
-            Kunci & Lihat Bunga Cintaku! 🔒💐
-          </button>
         </div>
 
-        <!-- STEP 5: SERTIFIKAT KELULUSAN BUCIN -->
+        <!-- STEP 5: AMPLOP PIXEL ART (SURAT SERTIFIKAT KELULUSAN BUCIN) -->
         <div id="step5" class="step-view">
-          <div class="victory-garden-card">
-            
-            <!-- Pixel Bucin Certificate (Botanical Garden Edition) -->
-            <div class="pixel-certificate" id="pixelCert">
-              <div class="cert-border-outer">
-                <div class="cert-border-inner">
-                  <div class="cert-header">
-                    <span class="cert-crown">👑</span>
-                    <h2 class="cert-title">SERTIFIKAT KELULUSAN BUCIN</h2>
-                    <span class="cert-crown">🌻</span>
-                  </div>
-                  <p class="cert-subtitle">Dianugerahkan secara sah & resmi kepada:</p>
-                  <h3 class="cert-her-name" id="certHerName">Putri Bunga Tercantik</h3>
-                  <p class="cert-desc" id="certDesc">
-                    Telah resmi dinobatkan sebagai <strong>Ratu Penjaga Taman Bunga Tercantik Se-Semesta</strong> dan Pemilik Sah Hati <strong id="certHisName">Pangerannya</strong> dengan Daya Mekar Cinta 1000% (Maksimal & Abadi)!
-                  </p>
-                  <div class="cert-flowers-row">
-                    <span class="f-pill">🤍 Melati Suci</span>
-                    <span class="f-pill">🌻 Bunga Matahari</span>
-                    <span class="f-pill">🌹 Mawar Abadi</span>
-                    <span class="f-pill">🌼 Dandelion Doa</span>
-                  </div>
-                  <div class="cert-seal-row">
-                    <div class="cert-seal">
-                      <span>OFFICIAL SEAL</span>
-                      <span>🌻 VERIFIED TRUE LOVE 🌻</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="envelope-action-card">
+            <div class="envelope-interactive-box" id="envelopeWrapper" title="Ketuk untuk membuka amplop!">
+              <img id="envelopeImg" class="pixel-envelope-art" src="assets/envelope_closed.png" alt="Amplop Surat Cinta">
+              <div class="envelope-sparkle-halo">✨</div>
             </div>
-
-            <!-- Button Lanjut ke Quest Pap Terakhir -->
-            <button id="btnStep5Next" class="pixel-btn primary pulse-btn">
-              Lanjut ke Quest Terakhir > 🎁📸
-            </button>
-
+            <p class="envelope-hint-text">
+              Flora membawakan surat resmi bersegel emas dari Kerajaan Bunga! 💌
+            </p>
+            <div class="envelope-btn-group">
+              <button id="btnOpenEnvelope" class="pixel-btn primary pulse-btn">
+                ✉️ BUKA AMPLOP SERTIFIKAT! 📜✨
+              </button>
+              <button id="btnStep5Next" class="pixel-btn success" style="display: none;">
+                Lanjut ke Quest Terakhir > 📸
+              </button>
+            </div>
           </div>
         </div>
 
         <!-- STEP 6: QUEST TERAKHIR (KIRIM PAP WA) -->
         <div id="step6" class="step-view">
-          <div class="victory-garden-card">
-
-            <!-- WhatsApp PAP Quest Box -->
-            <div class="pap-action-box">
-              <div class="camera-sparkle">📸 🌸</div>
-              <p class="pap-quest-title">★ QUEST TAMAN BUNGA TERAKHIR ★</p>
-              <p class="pap-quest-desc" id="papQuestDesc">
-                Kirimkan Pap paling manis yang disukai pacarmu sekarang juga ke WhatsApp!
-              </p>
-              
-              <button id="btnSendPap" class="pixel-btn success pulse-btn">
-                💌 KIRIM LAPORAN BUNGA & PAP KE WA! 📸🌻
-              </button>
-
-              <button id="btnRestartGame" class="pixel-btn secondary small-btn">
-                🔄 Jelajahi Taman Dari Awal
-              </button>
+          <div class="pap-action-box">
+            <div class="pap-bouquet-center">
+              <img class="pap-bouquet-art" src="assets/flower_bouquet.png" alt="Buket Cinta">
             </div>
-
+            <p class="pap-quest-title">★ QUEST TAMAN BUNGA TERAKHIR ★</p>
+            <p class="pap-quest-desc" id="papQuestDesc">
+              Kirimkan Pap paling manis yang disukai pacarmu sekarang juga ke WhatsApp!
+            </p>
+            <button id="btnSendPap" class="pixel-btn success pulse-btn">
+              💌 KIRIM LAPORAN BUNGA & PAP KE WA! 📸🌻
+            </button>
+            <button id="btnRestartGame" class="pixel-btn secondary small-btn">
+              🔄 Jelajahi Taman Dari Awal
+            </button>
           </div>
         </div>
 
@@ -415,17 +303,15 @@
     <!-- Bottom Garden Footer (Multi-Height Pixel Botanical Row) -->
     <footer class="game-footer">
       <div class="pixel-botanical-row">
-        <span class="bot-item size-giant" title="Bunga Matahari Besar">🌻</span>
-        <span class="bot-item size-micro" title="Semanggi Kecil">🍀</span>
-        <span class="bot-item size-med" title="Melati Putih">🤍</span>
-        <span class="bot-item size-small" title="Jamur Hutan">🍄</span>
-        <span class="bot-item size-large" title="Mawar Merah">🌹</span>
-        <span class="bot-item size-micro" title="Tunas Daun">🌿</span>
-        <span class="bot-item size-med" title="Dandelion Kuning">🌼</span>
-        <span class="bot-item size-giant" title="Bunga Matahari Raksasa">🌻</span>
-        <span class="bot-item size-small" title="Melati Harum">🤍</span>
-        <span class="bot-item size-large" title="Mawar Mekar">🌹</span>
-        <span class="bot-item size-micro" title="Kumbang Kecil">🐞</span>
+        <img class="bot-img-item size-giant" src="assets/flower_sunflower.png" title="Bunga Matahari" alt="Sunflower">
+        <img class="bot-img-item size-micro" src="assets/flower_clover.png" title="Semanggi" alt="Clover">
+        <img class="bot-img-item size-med" src="assets/flower_jasmine.png" title="Melati Putih" alt="Jasmine">
+        <img class="bot-img-item size-large" src="assets/flower_rose.png" title="Mawar Merah" alt="Rose">
+        <img class="bot-img-item size-med" src="assets/flower_dandelion.png" title="Dandelion" alt="Dandelion">
+        <img class="bot-img-item size-giant" src="assets/flower_sunflower.png" title="Bunga Matahari" alt="Sunflower">
+        <img class="bot-img-item size-small" src="assets/flower_jasmine.png" title="Melati Putih" alt="Jasmine">
+        <img class="bot-img-item size-large" src="assets/flower_rose.png" title="Mawar Merah" alt="Rose">
+        <img class="bot-img-item size-micro" src="assets/flower_clover.png" title="Semanggi" alt="Clover">
       </div>
     </footer>
 
@@ -459,6 +345,58 @@
       </div>
       <div class="modal-footer">
         <button id="btnSaveConfig" class="pixel-btn primary">Simpan Pengaturan 💾</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Popup Sertifikat Kelulusan Bucin 📜 (Tampil saat Amplop Dibuka) -->
+  <div id="certModal" class="modal-backdrop">
+    <div class="modal-box pixel-certificate-modal">
+      <!-- 4 Golden Pixel Corner Brackets -->
+      <div class="pixel-dialogue-corner c-tl"></div>
+      <div class="pixel-dialogue-corner c-tr"></div>
+      <div class="pixel-dialogue-corner c-bl"></div>
+      <div class="pixel-dialogue-corner c-br"></div>
+
+      <div class="modal-header cert-modal-header">
+        <h2 class="modal-title">📜 SERTIFIKAT KELULUSAN BUCIN 🌻</h2>
+        <button id="btnCloseCertModal" class="pixel-btn-close">✖</button>
+      </div>
+      <div class="modal-body cert-modal-body">
+        <div class="pixel-certificate" id="pixelCert">
+          <div class="cert-border-outer">
+            <div class="cert-border-inner">
+              <div class="cert-header">
+                <img class="cert-crown-icon" src="assets/flower_sunflower.png" alt="Crown">
+                <h3 class="cert-title">SERTIFIKAT KELULUSAN BUCIN</h3>
+                <img class="cert-crown-icon" src="assets/flower_sunflower.png" alt="Crown">
+              </div>
+              <p class="cert-subtitle">Dianugerahkan secara sah & resmi kepada:</p>
+              <h3 class="cert-her-name" id="certHerName">Putri Bunga Tercantik</h3>
+              <p class="cert-desc" id="certDesc">
+                Telah resmi dinobatkan sebagai <strong>Ratu Penjaga Taman Bunga Tercantik Se-Semesta</strong> dan Pemilik Sah Hati <strong id="certHisName">Pangerannya</strong> dengan Daya Mekar Cinta 1000% (Maksimal & Abadi)!
+              </p>
+              <div class="cert-flowers-row">
+                <span class="f-pill"><img class="cert-pill-icon" src="assets/flower_jasmine.png" alt="Melati"> Melati Suci</span>
+                <span class="f-pill"><img class="cert-pill-icon" src="assets/flower_sunflower.png" alt="Matahari"> Bunga Matahari</span>
+                <span class="f-pill"><img class="cert-pill-icon" src="assets/flower_rose.png" alt="Mawar"> Mawar Abadi</span>
+                <span class="f-pill"><img class="cert-pill-icon" src="assets/flower_dandelion.png" alt="Dandelion"> Dandelion Doa</span>
+              </div>
+              <div class="cert-seal-row">
+                <div class="cert-seal">
+                  <img class="cert-seal-bouquet" src="assets/flower_bouquet.png" alt="Seal">
+                  <span>OFFICIAL BOTANICAL SEAL</span>
+                  <span>★ VERIFIED TRUE LOVE 1000% ★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer cert-modal-footer">
+        <button id="btnCertModalNext" class="pixel-btn primary pulse-btn">
+          Lanjut ke Quest Terakhir > 📸💌
+        </button>
       </div>
     </div>
   </div>
