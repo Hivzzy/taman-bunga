@@ -627,15 +627,28 @@ btnMaxLove.addEventListener('click', () => {
 // ============================================================
 
 function setupFinalStep() {
-  document.getElementById('bouquetSummary').innerHTML = `
-    <strong>${state.herName}</strong> & <strong>${state.hisName}</strong><br/>
-    Resmi dinobatkan sebagai pasangan paling serasi di Taman Bunga Cinta! 🌻<br/>
-    <span style="font-size: 16px; color: #2d6a4f;">Tingkat Mekar Cinta: ${state.loveDescription}</span>
-  `;
+  const her = (state.herName || 'Putri Bunga').trim();
+  const his = (state.hisName || state.config.defaultHisName || 'Pangerannya').trim();
 
-  document.getElementById('papQuestDesc').innerHTML = `
-    Kirimkan Pap paling manis & cantik yang disukai <strong>${state.hisName}</strong> sekarang juga lewat WhatsApp! 📸🌻
-  `;
+  const certHer = document.getElementById('certHerName');
+  if (certHer) certHer.textContent = her;
+
+  const certHis = document.getElementById('certHisName');
+  if (certHis) certHis.textContent = his;
+
+  const certDesc = document.getElementById('certDesc');
+  if (certDesc) {
+    certDesc.innerHTML = `
+      Telah resmi dinobatkan sebagai <strong>Ratu Penjaga Taman Bunga Tercantik Se-Semesta</strong> dan Pemilik Sah Hati <strong>${his}</strong> dengan Tingkat Mekar Cinta: <strong>${state.loveDescription}</strong>!
+    `;
+  }
+
+  const papQuestDesc = document.getElementById('papQuestDesc');
+  if (papQuestDesc) {
+    papQuestDesc.innerHTML = `
+      Kirimkan Pap paling manis & cantik yang disukai <strong>${his}</strong> sekarang juga lewat WhatsApp! 📸🌻
+    `;
+  }
 }
 
 document.getElementById('btnSendPap').addEventListener('click', () => {

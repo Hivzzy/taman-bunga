@@ -703,35 +703,73 @@ body {
   width: 100%;
 }
 
-.bouquet-showcase {
-  background: #ffffff;
+/* Pixel Bucin Certificate (Botanical Garden Edition) */
+.pixel-certificate {
+  width: 100%;
+  background: #fffdf5;
   border: 4px solid var(--color-wood-dark);
   border-radius: 8px;
-  box-shadow: 0 5px 0 var(--color-wood-shadow);
-  padding: 12px;
-  width: 100%;
+  box-shadow: 0 6px 0 var(--color-wood-shadow);
+  padding: 6px;
+}
+
+.cert-border-outer {
+  border: 2px solid var(--color-sunflower-gold);
+  padding: 4px;
+}
+
+.cert-border-inner {
+  border: 1px dashed var(--color-green-forest);
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   text-align: center;
 }
 
-.bouquet-icon {
-  font-size: 36px;
-  animation: pulseBeat 2s infinite;
+.cert-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.bouquet-title {
+.cert-crown {
+  font-size: 16px;
+}
+
+.cert-title {
   font-size: 9px;
   color: var(--color-green-forest);
+  letter-spacing: 0.5px;
 }
 
-.flower-badges-row {
+.cert-subtitle {
+  font-family: var(--font-pixel-dialogue);
+  font-size: 18px;
+  color: #555555;
+}
+
+.cert-her-name {
+  font-size: 13px;
+  color: #b37400;
+  border-bottom: 2px solid var(--color-green-mint);
+  padding-bottom: 2px;
+}
+
+.cert-desc {
+  font-family: var(--font-pixel-dialogue);
+  font-size: 18px;
+  line-height: 1.35;
+  color: var(--color-wood-dark);
+}
+
+.cert-flowers-row {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   justify-content: center;
+  margin-top: 2px;
 }
 
 .f-pill {
@@ -744,11 +782,21 @@ body {
   color: var(--color-green-dark);
 }
 
-.bouquet-summary {
-  font-family: var(--font-pixel-dialogue);
-  font-size: 19px;
-  line-height: 1.3;
-  color: var(--color-wood-dark);
+.cert-seal-row {
+  margin-top: 4px;
+}
+
+.cert-seal {
+  background: #ffecb3;
+  border: 2px solid var(--color-wood-dark);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 7px;
+  color: #b71c1c;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-weight: bold;
 }
 
 /* Pap Action Box */
