@@ -47,7 +47,7 @@ body {
 }
 
 /* ========================================================
-   TRUE PIXEL ART WORLD: STARDEW VALLEY FLOWER MEADOW & SKY
+   TRUE PIXEL ART WORLD: AUTHENTIC 16-BIT RETRO MEADOW ASSET
    ======================================================== */
 .pixel-world-bg {
   position: fixed;
@@ -58,12 +58,26 @@ body {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, 
-    #62b6e5 0%, 
-    #8ad5f0 32%, 
-    #bde8f5 55%, 
-    #cbebd2 72%, 
-    #a3d9b1 100%);
+  background-color: #2b7bb5;
+  background-image: url('assets/meadow_full.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Atmospheric Retro Screen Vignette */
+.pixel-world-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, transparent 65%, rgba(20, 50, 35, 0.3) 100%);
+  pointer-events: none;
 }
 
 /* Horizon & Radiant Pixel Sun */
@@ -72,7 +86,8 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 60%;
+  height: 50%;
+  pointer-events: none;
 }
 
 .pixel-sun-orb {
@@ -96,8 +111,8 @@ body {
 }
 
 @keyframes sunPulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 4px rgba(255,209,102,0.45), 0 0 0 8px rgba(255,209,102,0.25); }
-  100% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(255,209,102,0.65), 0 0 0 12px rgba(255,209,102,0.35); }
+  0% { transform: scale(1); box-shadow: 0 0 0 4px rgba(255, 209, 102, 0.45), 0 0 0 8px rgba(255, 209, 102, 0.25); }
+  100% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(255, 209, 102, 0.65), 0 0 0 12px rgba(255, 209, 102, 0.35); }
 }
 
 .sun-face {
@@ -111,7 +126,7 @@ body {
 }
 
 .pixel-cloud.c1 {
-  top: 10%;
+  top: 8%;
   left: -140px;
   width: 120px;
   animation: floatCloud1 45s linear infinite;
@@ -119,7 +134,7 @@ body {
 }
 
 .pixel-cloud.c2 {
-  top: 24%;
+  top: 18%;
   left: -100px;
   width: 88px;
   animation: floatCloud2 62s linear infinite 14s;
@@ -127,7 +142,7 @@ body {
 }
 
 .pixel-cloud.c3 {
-  top: 6%;
+  top: 4%;
   left: -120px;
   width: 104px;
   animation: floatCloud3 52s linear infinite 26s;
@@ -153,207 +168,6 @@ body {
   100% { transform: translateX(calc(100vw + 240px)); }
 }
 
-/* Distant Mountains & Stepped Ridges */
-.pixel-mountains-ridge {
-  position: absolute;
-  bottom: 90px;
-  left: 0;
-  width: 100%;
-  height: 130px;
-  pointer-events: none;
-}
-
-.mountain-svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.distant-pines {
-  position: absolute;
-  bottom: 48px;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  padding: 0 24px;
-  font-size: 15px;
-  opacity: 0.75;
-  filter: drop-shadow(0 2px 0 rgba(0,0,0,0.2));
-}
-
-/* Midground: Rolling Green Meadow, Trees, Rustic Wooden Fence & Trail */
-.pixel-midground-hills {
-  position: absolute;
-  bottom: 35px;
-  left: 0;
-  width: 100%;
-  height: 115px;
-  pointer-events: none;
-}
-
-.pixel-hill-slope {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 85px;
-  background: #52b788;
-  border-top: 4px solid #40916c;
-  box-shadow: inset 0 8px 0 #74c69d;
-}
-
-/* Rustic Wooden Fence (Stardew Valley Rails) */
-.pixel-rustic-fence {
-  position: absolute;
-  bottom: 48px;
-  left: 0;
-  width: 100%;
-  height: 24px;
-  pointer-events: none;
-}
-
-.fence-rail {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: #7f4f24;
-  box-shadow: 0 2px 0 #402816;
-}
-.upper-rail { top: 4px; }
-.lower-rail { top: 14px; }
-
-.fence-posts-group {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 18px;
-}
-
-.f-post {
-  width: 6px;
-  height: 24px;
-  background: #936639;
-  border: 1px solid #402816;
-  border-radius: 2px 2px 0 0;
-  box-shadow: 2px 0 0 #582f0e;
-}
-
-/* Cobblestone Trail */
-.pixel-cobblestones {
-  position: absolute;
-  bottom: 12px;
-  left: 15%;
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.cobble-stone {
-  display: inline-block;
-  background: #83c5be;
-  border: 2px solid #2d6a4f;
-  border-radius: 2px;
-  box-shadow: 1px 1px 0 #1b4332;
-}
-.c-s1 { width: 14px; height: 7px; }
-.c-s2 { width: 18px; height: 8px; margin-top: 5px; background: #e9d8a6; }
-.c-s3 { width: 12px; height: 6px; }
-.c-s4 { width: 20px; height: 9px; margin-top: 3px; }
-.c-s5 { width: 15px; height: 7px; background: #e9d8a6; }
-
-/* Cozy Pixel Trees */
-.pixel-tree-object {
-  position: absolute;
-  bottom: 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: bottom center;
-  animation: treeSway 4.2s infinite ease-in-out alternate;
-}
-.tree-left-side { left: 4%; }
-.tree-right-side { right: 4%; animation-delay: 1.8s; }
-
-.tree-foliage {
-  width: 48px;
-  height: 48px;
-  background: #2d6a4f;
-  border: 3px solid #1b4332;
-  border-radius: 8px;
-  box-shadow: inset 0 0 0 4px #52b788, 0 4px 0 rgba(0,0,0,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-}
-.foliage-sakura {
-  background: #ffb4a2;
-  border-color: #b5838d;
-  box-shadow: inset 0 0 0 4px #e5989b, 0 4px 0 rgba(0,0,0,0.25);
-}
-
-.tree-trunk-base {
-  width: 10px;
-  height: 20px;
-  background: #582f0e;
-  border-left: 2px solid #7f4f24;
-  box-shadow: 2px 0 0 #241407;
-}
-
-@keyframes treeSway {
-  0% { transform: rotate(-3deg); }
-  100% { transform: rotate(3deg); }
-}
-
-/* Foreground Meadow Strip: Grass Texture, Wildflowers & Animated Critters */
-.pixel-foreground-strip {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 52px;
-}
-
-.pixel-grass-texture {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #2d6a4f;
-  background-image: 
-    repeating-linear-gradient(90deg, #1b4332 0px, #1b4332 4px, #2d6a4f 4px, #2d6a4f 8px, #40916c 8px, #40916c 12px),
-    linear-gradient(0deg, #1b4332 0px, #1b4332 10px, transparent 10px);
-  box-shadow: inset 0 4px 0 #52b788;
-}
-
-.wildflower-patch {
-  position: absolute;
-  bottom: 12px;
-  display: flex;
-  gap: 6px;
-  font-size: 18px;
-  z-index: 2;
-}
-.patch-left { left: 75px; }
-.patch-right { right: 75px; }
-
-.wf {
-  display: inline-block;
-  transform-origin: bottom center;
-  animation: gentleSway 2.5s infinite ease-in-out alternate;
-}
-.wf-sunflower { animation-delay: 0.4s; font-size: 22px; }
-.wf-rose { animation-delay: 0.8s; font-size: 20px; }
-.wf-dandelion { animation-delay: 1.2s; font-size: 18px; }
-
 /* Fluttering Animated Critters Across Landscape */
 .critter-wander {
   position: absolute;
@@ -362,23 +176,23 @@ body {
 }
 
 .critter-bfly-blue {
-  bottom: 75px;
+  bottom: 120px;
   left: 12%;
-  font-size: 20px;
+  font-size: 22px;
   animation: wanderBfly1 14s infinite ease-in-out;
 }
 
 .critter-bfly-orange {
-  bottom: 105px;
+  bottom: 150px;
   right: 14%;
-  font-size: 18px;
+  font-size: 20px;
   animation: wanderBfly2 18s infinite ease-in-out 4s;
 }
 
 .critter-bee-buzz {
-  bottom: 58px;
+  bottom: 90px;
   left: 45%;
-  font-size: 18px;
+  font-size: 20px;
   animation: wanderBee 8s infinite ease-in-out;
 }
 
