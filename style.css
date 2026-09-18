@@ -33,7 +33,7 @@
 }
 
 body {
-  background: linear-gradient(180deg, #d8f3dc 0%, #b7e4c7 40%, #95d5b2 100%);
+  background: #62b6e5;
   min-height: 100vh;
   font-family: var(--font-pixel-heading);
   color: var(--color-green-dark);
@@ -44,6 +44,367 @@ body {
   position: relative;
   overflow-x: hidden;
   user-select: none;
+}
+
+/* ========================================================
+   TRUE PIXEL ART WORLD: STARDEW VALLEY FLOWER MEADOW & SKY
+   ======================================================== */
+.pixel-world-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, 
+    #62b6e5 0%, 
+    #8ad5f0 32%, 
+    #bde8f5 55%, 
+    #cbebd2 72%, 
+    #a3d9b1 100%);
+}
+
+/* Horizon & Radiant Pixel Sun */
+.pixel-sky-horizon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+}
+
+.pixel-sun-orb {
+  position: absolute;
+  top: 20px;
+  right: 36px;
+  width: 50px;
+  height: 50px;
+  background: #ffd166;
+  border: 4px solid #ffb703;
+  box-shadow: 
+    0 0 0 4px rgba(255, 209, 102, 0.45),
+    0 0 0 8px rgba(255, 209, 102, 0.25),
+    0 0 0 14px rgba(255, 209, 102, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  animation: sunPulse 3.5s infinite ease-in-out alternate;
+  z-index: 2;
+}
+
+@keyframes sunPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 4px rgba(255,209,102,0.45), 0 0 0 8px rgba(255,209,102,0.25); }
+  100% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(255,209,102,0.65), 0 0 0 12px rgba(255,209,102,0.35); }
+}
+
+.sun-face {
+  filter: drop-shadow(0 2px 0 rgba(0,0,0,0.15));
+}
+
+/* Multi-tier Floating Pixel Clouds */
+.pixel-cloud {
+  position: absolute;
+  pointer-events: none;
+}
+
+.pixel-cloud.c1 {
+  top: 10%;
+  left: -140px;
+  width: 120px;
+  animation: floatCloud1 45s linear infinite;
+  opacity: 0.95;
+}
+
+.pixel-cloud.c2 {
+  top: 24%;
+  left: -100px;
+  width: 88px;
+  animation: floatCloud2 62s linear infinite 14s;
+  opacity: 0.88;
+}
+
+.pixel-cloud.c3 {
+  top: 6%;
+  left: -120px;
+  width: 104px;
+  animation: floatCloud3 52s linear infinite 26s;
+  opacity: 0.92;
+}
+
+.cloud-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 0 rgba(45, 106, 79, 0.12));
+}
+
+@keyframes floatCloud1 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(100vw + 260px)); }
+}
+@keyframes floatCloud2 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(100vw + 220px)); }
+}
+@keyframes floatCloud3 {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(100vw + 240px)); }
+}
+
+/* Distant Mountains & Stepped Ridges */
+.pixel-mountains-ridge {
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  width: 100%;
+  height: 130px;
+  pointer-events: none;
+}
+
+.mountain-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.distant-pines {
+  position: absolute;
+  bottom: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 24px;
+  font-size: 15px;
+  opacity: 0.75;
+  filter: drop-shadow(0 2px 0 rgba(0,0,0,0.2));
+}
+
+/* Midground: Rolling Green Meadow, Trees, Rustic Wooden Fence & Trail */
+.pixel-midground-hills {
+  position: absolute;
+  bottom: 35px;
+  left: 0;
+  width: 100%;
+  height: 115px;
+  pointer-events: none;
+}
+
+.pixel-hill-slope {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 85px;
+  background: #52b788;
+  border-top: 4px solid #40916c;
+  box-shadow: inset 0 8px 0 #74c69d;
+}
+
+/* Rustic Wooden Fence (Stardew Valley Rails) */
+.pixel-rustic-fence {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  pointer-events: none;
+}
+
+.fence-rail {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #7f4f24;
+  box-shadow: 0 2px 0 #402816;
+}
+.upper-rail { top: 4px; }
+.lower-rail { top: 14px; }
+
+.fence-posts-group {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 18px;
+}
+
+.f-post {
+  width: 6px;
+  height: 24px;
+  background: #936639;
+  border: 1px solid #402816;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 2px 0 0 #582f0e;
+}
+
+/* Cobblestone Trail */
+.pixel-cobblestones {
+  position: absolute;
+  bottom: 12px;
+  left: 15%;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cobble-stone {
+  display: inline-block;
+  background: #83c5be;
+  border: 2px solid #2d6a4f;
+  border-radius: 2px;
+  box-shadow: 1px 1px 0 #1b4332;
+}
+.c-s1 { width: 14px; height: 7px; }
+.c-s2 { width: 18px; height: 8px; margin-top: 5px; background: #e9d8a6; }
+.c-s3 { width: 12px; height: 6px; }
+.c-s4 { width: 20px; height: 9px; margin-top: 3px; }
+.c-s5 { width: 15px; height: 7px; background: #e9d8a6; }
+
+/* Cozy Pixel Trees */
+.pixel-tree-object {
+  position: absolute;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: bottom center;
+  animation: treeSway 4.2s infinite ease-in-out alternate;
+}
+.tree-left-side { left: 4%; }
+.tree-right-side { right: 4%; animation-delay: 1.8s; }
+
+.tree-foliage {
+  width: 48px;
+  height: 48px;
+  background: #2d6a4f;
+  border: 3px solid #1b4332;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 4px #52b788, 0 4px 0 rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.foliage-sakura {
+  background: #ffb4a2;
+  border-color: #b5838d;
+  box-shadow: inset 0 0 0 4px #e5989b, 0 4px 0 rgba(0,0,0,0.25);
+}
+
+.tree-trunk-base {
+  width: 10px;
+  height: 20px;
+  background: #582f0e;
+  border-left: 2px solid #7f4f24;
+  box-shadow: 2px 0 0 #241407;
+}
+
+@keyframes treeSway {
+  0% { transform: rotate(-3deg); }
+  100% { transform: rotate(3deg); }
+}
+
+/* Foreground Meadow Strip: Grass Texture, Wildflowers & Animated Critters */
+.pixel-foreground-strip {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+}
+
+.pixel-grass-texture {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2d6a4f;
+  background-image: 
+    repeating-linear-gradient(90deg, #1b4332 0px, #1b4332 4px, #2d6a4f 4px, #2d6a4f 8px, #40916c 8px, #40916c 12px),
+    linear-gradient(0deg, #1b4332 0px, #1b4332 10px, transparent 10px);
+  box-shadow: inset 0 4px 0 #52b788;
+}
+
+.wildflower-patch {
+  position: absolute;
+  bottom: 12px;
+  display: flex;
+  gap: 6px;
+  font-size: 18px;
+  z-index: 2;
+}
+.patch-left { left: 75px; }
+.patch-right { right: 75px; }
+
+.wf {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: gentleSway 2.5s infinite ease-in-out alternate;
+}
+.wf-sunflower { animation-delay: 0.4s; font-size: 22px; }
+.wf-rose { animation-delay: 0.8s; font-size: 20px; }
+.wf-dandelion { animation-delay: 1.2s; font-size: 18px; }
+
+/* Fluttering Animated Critters Across Landscape */
+.critter-wander {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.critter-bfly-blue {
+  bottom: 75px;
+  left: 12%;
+  font-size: 20px;
+  animation: wanderBfly1 14s infinite ease-in-out;
+}
+
+.critter-bfly-orange {
+  bottom: 105px;
+  right: 14%;
+  font-size: 18px;
+  animation: wanderBfly2 18s infinite ease-in-out 4s;
+}
+
+.critter-bee-buzz {
+  bottom: 58px;
+  left: 45%;
+  font-size: 18px;
+  animation: wanderBee 8s infinite ease-in-out;
+}
+
+@keyframes wanderBfly1 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(0.9); }
+  25% { transform: translate(65px, -32px) rotate(15deg) scale(1.1); }
+  50% { transform: translate(145px, -12px) rotate(-10deg) scale(0.95); }
+  75% { transform: translate(85px, -45px) rotate(20deg) scale(1.1); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(0.9); }
+}
+
+@keyframes wanderBfly2 {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  30% { transform: translate(-85px, -35px) rotate(-15deg) scale(0.85); }
+  60% { transform: translate(-165px, -15px) rotate(10deg) scale(1.1); }
+  85% { transform: translate(-75px, -50px) rotate(-20deg) scale(0.9); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+@keyframes wanderBee {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(16px, -14px); }
+  40% { transform: translate(-22px, -8px); }
+  60% { transform: translate(26px, -22px); }
+  80% { transform: translate(-12px, -6px); }
+  100% { transform: translate(0, 0); }
 }
 
 /* Background Particle Canvas */
@@ -203,35 +564,59 @@ body {
   box-shadow: none;
 }
 
-/* Main Container */
+/* Main Container (Pixel Art Planter Board) */
 .game-container {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 480px;
-  background: #fefae0;
+  background-color: #fbf5e2;
+  background-image: 
+    repeating-linear-gradient(0deg, #f8edcf 0px, #f8edcf 24px, #e8d7ad 24px, #d8bf8c 26px),
+    linear-gradient(90deg, rgba(147, 102, 57, 0.08) 1px, transparent 1px);
+  background-size: 100% 26px, 12px 100%;
   border: 5px solid var(--color-wood-dark);
-  border-radius: 12px;
+  border-radius: 8px;
   box-shadow: 
-    0 0 0 4px var(--color-green-mint),
-    0 10px 0 var(--color-wood-shadow),
-    0 24px 32px rgba(27, 67, 50, 0.25);
-  padding: 16px;
+    0 0 0 3px #52b788,
+    0 0 0 6px #2d6a4f,
+    0 10px 0 #241407,
+    0 24px 36px rgba(27, 67, 50, 0.35);
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* Header Banner */
+/* 4 Pixel Brass Corner Studs */
+.pixel-corner-stud {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #ffd166;
+  border: 3px solid #b37400;
+  box-shadow: 
+    inset 2px 2px 0 #ffffff,
+    inset -2px -2px 0 #7f4f24,
+    1px 1px 0 #241407;
+  z-index: 15;
+}
+.stud-tl { top: -6px; left: -6px; }
+.stud-tr { top: -6px; right: -6px; }
+.stud-bl { bottom: -6px; left: -6px; }
+.stud-br { bottom: -6px; right: -6px; }
+
+/* Header Banner (Forest Guild Wooden Plaque) */
 .game-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #2d6a4f, #1b4332);
+  background: 
+    repeating-linear-gradient(90deg, #1b4332 0px, #1b4332 8px, #255a42 8px, #255a42 16px);
   padding: 8px 12px;
-  border: 3px solid var(--color-wood-dark);
-  border-radius: 8px;
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.3), 0 4px 0 var(--color-wood-shadow);
+  border: 3px solid #ffb703;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 2px #402816, 0 4px 0 #241407;
 }
 
 .header-flower-icon {
@@ -304,10 +689,20 @@ body {
   z-index: 2;
   width: 116px;
   height: 116px;
-  background: #ffffff;
+  background-color: #f4fdf6;
+  background-image: 
+    radial-gradient(circle at 50% 30%, #fffbe6 0%, #d8f3dc 60%, #b7e4c7 100%),
+    linear-gradient(45deg, rgba(45, 106, 79, 0.12) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(45, 106, 79, 0.12) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(45, 106, 79, 0.12) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(45, 106, 79, 0.12) 75%);
+  background-size: 100% 100%, 12px 12px, 12px 12px, 12px 12px, 12px 12px;
+  background-position: 0 0, 0 0, 0 6px, 6px -6px, -6px 0px;
   border: 4px solid var(--color-wood-dark);
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 3px var(--color-green-mint), 0 5px 0 var(--color-wood-shadow);
+  border-radius: 8px;
+  box-shadow: 
+    inset 0 0 0 3px #74c69d,
+    0 6px 0 var(--color-wood-shadow);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -410,33 +805,54 @@ body {
   animation: pulseBeat 1.5s infinite;
 }
 
-/* RPG Dialogue Window */
+/* RPG Dialogue Window (Botanical Herbarium Parchment) */
 .rpg-dialogue-window {
   position: relative;
-  background: #ffffff;
+  background-color: #fffef2;
+  background-image: 
+    radial-gradient(#eed9a4 14%, transparent 15%),
+    radial-gradient(#e2c185 14%, transparent 15%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
   border: 4px solid var(--color-wood-dark);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 16px 14px 14px 14px;
   box-shadow: 
-    inset 0 0 0 2px var(--color-green-mint),
-    0 5px 0 var(--color-wood-shadow);
+    inset 0 0 0 2px #d4a373,
+    inset 0 0 0 4px #faedcd,
+    0 6px 0 var(--color-wood-shadow);
   display: flex;
   flex-direction: column;
   gap: 10px;
   cursor: pointer;
 }
 
+/* 4 Golden Pixel Dialogue Corner Brackets */
+.pixel-dialogue-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #ffb703;
+  border: 2px solid #582f0e;
+  box-shadow: inset 1px 1px 0 #ffffff;
+  z-index: 10;
+}
+.c-tl { top: -3px; left: -3px; }
+.c-tr { top: -3px; right: -3px; }
+.c-bl { bottom: -3px; left: -3px; }
+.c-br { bottom: -3px; right: -3px; }
+
 .dialogue-nameplate {
   position: absolute;
   top: -14px;
   left: 14px;
-  background: var(--color-green-forest);
+  background: linear-gradient(180deg, #52b788 0%, #2d6a4f 100%);
   color: var(--color-jasmine-white);
   border: 3px solid var(--color-wood-dark);
   border-radius: 4px;
   padding: 3px 8px;
   font-size: 9px;
-  box-shadow: 2px 2px 0 var(--color-wood-shadow);
+  box-shadow: 2px 2px 0 var(--color-wood-shadow), inset 1px 1px 0 #95d5b2;
 }
 
 .dialogue-content {
@@ -487,14 +903,16 @@ body {
 
 .start-flower-badge {
   font-size: 8px;
-  background: var(--color-green-light);
-  border: 2px solid var(--color-green-forest);
-  border-radius: 12px;
-  padding: 4px 10px;
-  color: var(--color-green-forest);
+  background: linear-gradient(180deg, #52b788 0%, #2d6a4f 100%);
+  border: 2px solid #ffb703;
+  border-radius: 4px;
+  padding: 6px 14px;
+  color: #ffffff;
+  box-shadow: 0 3px 0 #241407, inset 0 1px 0 #95d5b2;
+  letter-spacing: 0.5px;
 }
 
-/* Pixel Buttons */
+/* Pixel Buttons (16-Bit Beveled Retro Arcade Style) */
 .pixel-btn {
   font-family: var(--font-pixel-heading);
   font-size: 10px;
@@ -505,7 +923,7 @@ body {
   position: relative;
   text-align: center;
   letter-spacing: 0.5px;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
   width: 100%;
   max-width: 340px;
 }
@@ -513,37 +931,68 @@ body {
 .pixel-btn.primary {
   background: #ffb703;
   color: #38220f;
-  box-shadow: 0 5px 0 #b37400, 0 6px 0 var(--color-wood-shadow);
+  box-shadow: 
+    inset 2px 2px 0 #ffe082,
+    inset -2px -2px 0 #b37400,
+    0 5px 0 var(--color-wood-shadow);
   text-shadow: 1px 1px 0 #ffe082;
 }
 .pixel-btn.primary:hover {
   background: #ffc229;
   transform: translateY(-2px);
-  box-shadow: 0 7px 0 #b37400, 0 8px 0 var(--color-wood-shadow);
+  box-shadow: 
+    inset 2px 2px 0 #ffe082,
+    inset -2px -2px 0 #b37400,
+    0 7px 0 var(--color-wood-shadow);
 }
 .pixel-btn.primary:active {
   transform: translateY(4px);
-  box-shadow: 0 1px 0 #b37400;
+  box-shadow: 
+    inset 2px 2px 0 #b37400,
+    0 1px 0 var(--color-wood-shadow);
 }
 
 .pixel-btn.secondary {
   background: #d8f3dc;
   color: var(--color-green-dark);
-  box-shadow: 0 4px 0 #95d5b2, 0 5px 0 var(--color-wood-shadow);
+  box-shadow: 
+    inset 2px 2px 0 #ffffff,
+    inset -2px -2px 0 #95d5b2,
+    0 4px 0 var(--color-wood-shadow);
 }
 
 .pixel-btn.danger {
   background: #a4b0be;
   color: #2f3542;
-  box-shadow: 0 4px 0 #747d8c, 0 5px 0 var(--color-wood-shadow);
+  box-shadow: 
+    inset 2px 2px 0 #ced6e0,
+    inset -2px -2px 0 #747d8c,
+    0 4px 0 var(--color-wood-shadow);
 }
 
 .pixel-btn.success {
   background: #2ecc71;
   color: #ffffff;
-  box-shadow: 0 6px 0 #1b9649, 0 7px 0 var(--color-wood-shadow);
+  box-shadow: 
+    inset 2px 2px 0 #a8f5c8,
+    inset -2px -2px 0 #1b9649,
+    0 6px 0 var(--color-wood-shadow);
   text-shadow: 1px 1px 0 #126330;
   font-size: 11px;
+}
+.pixel-btn.success:hover {
+  background: #3ce082;
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 2px 2px 0 #a8f5c8,
+    inset -2px -2px 0 #1b9649,
+    0 8px 0 var(--color-wood-shadow);
+}
+.pixel-btn.success:active {
+  transform: translateY(4px);
+  box-shadow: 
+    inset 2px 2px 0 #1b9649,
+    0 2px 0 var(--color-wood-shadow);
 }
 
 .mini-btn { font-size: 8px; padding: 8px 10px; }
@@ -564,22 +1013,28 @@ body {
   text-align: left;
 }
 
+/* Planter Slate Sunken Input */
 .pixel-input {
   font-family: var(--font-pixel-dialogue);
   font-size: 24px;
   padding: 10px 12px;
   border: 3px solid var(--color-wood-dark);
   border-radius: 4px;
-  background: #fdfdf5;
+  background: #fffcf0;
   color: var(--color-wood-dark);
   outline: none;
-  box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 
+    inset 3px 3px 0 #d4a373, 
+    inset -2px -2px 0 #ffffff,
+    0 2px 0 rgba(0, 0, 0, 0.1);
   width: 100%;
 }
 .pixel-input:focus {
   background: #ffffff;
   border-color: var(--color-green-forest);
-  box-shadow: inset 0 0 0 2px var(--color-green-mint);
+  box-shadow: 
+    inset 2px 2px 0 #74c69d, 
+    0 0 0 3px #ffb703;
 }
 
 /* Step 3: Decision Buttons */
@@ -614,12 +1069,23 @@ body {
   font-weight: bold;
 }
 
-/* Step 4: Garden Vine Frame */
+/* Step 4: Garden Vine Frame (Botanical Trellis Panel) */
 .love-meter-wrapper {
   width: 100%;
+  background-color: #f4fdf6;
+  background-image: 
+    linear-gradient(45deg, rgba(82, 183, 136, 0.15) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(82, 183, 136, 0.15) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(82, 183, 136, 0.15) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(82, 183, 136, 0.15) 75%);
+  background-size: 14px 14px;
+  border: 3px solid var(--color-wood-dark);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: inset 0 0 0 2px #74c69d, 0 4px 0 var(--color-wood-shadow);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -636,13 +1102,14 @@ body {
 .garden-vine-frame {
   width: 100%;
   height: 24px;
-  background: #2d1808;
+  background: #2b1810;
   border: 3px solid var(--color-wood-dark);
   border-radius: 4px;
   position: relative;
   padding: 3px;
   display: flex;
   align-items: center;
+  box-shadow: inset 2px 2px 0 #180d08, 0 2px 0 var(--color-wood-shadow);
 }
 
 .vine-fill {
@@ -685,11 +1152,12 @@ body {
 .meter-fun-badge {
   font-family: var(--font-pixel-dialogue);
   font-size: 22px;
-  color: var(--color-green-forest);
-  background: #d8f3dc;
-  padding: 4px 12px;
-  border: 2px dashed var(--color-green-forest);
+  color: var(--color-green-dark);
+  background: #fdfae5;
+  padding: 6px 12px;
+  border: 2px dashed #ffb703;
   border-radius: 6px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
   text-align: center;
   width: 100%;
 }
@@ -703,29 +1171,39 @@ body {
   width: 100%;
 }
 
-/* Pixel Bucin Certificate (Botanical Garden Edition) */
+/* Pixel Bucin Certificate (Royal Botanical Scroll) */
 .pixel-certificate {
   width: 100%;
-  background: #fffdf5;
+  background-color: #fffdf5;
+  background-image: 
+    radial-gradient(#ebd6b0 14%, transparent 15%),
+    linear-gradient(0deg, rgba(255, 183, 3, 0.06) 1px, transparent 1px);
+  background-size: 8px 8px, 100% 16px;
   border: 4px solid var(--color-wood-dark);
-  border-radius: 8px;
-  box-shadow: 0 6px 0 var(--color-wood-shadow);
+  border-radius: 6px;
+  box-shadow: 
+    0 0 0 3px #ffb703,
+    0 0 0 5px #2d6a4f,
+    0 8px 0 var(--color-wood-shadow);
   padding: 6px;
 }
 
 .cert-border-outer {
   border: 2px solid var(--color-sunflower-gold);
-  padding: 4px;
+  background: rgba(254, 250, 224, 0.5);
+  padding: 6px;
 }
 
 .cert-border-inner {
-  border: 1px dashed var(--color-green-forest);
-  padding: 10px;
+  border: 2px dashed var(--color-green-forest);
+  background: #ffffff;
+  padding: 12px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   text-align: center;
+  box-shadow: inset 0 0 0 2px #d8f3dc;
 }
 
 .cert-header {
@@ -799,17 +1277,23 @@ body {
   font-weight: bold;
 }
 
-/* Pap Action Box */
+/* Pap Action Box (Pixel Airmail Delivery Notice) */
 .pap-action-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
   width: 100%;
-  background: linear-gradient(135deg, #f4fdf6, #e8f8ec);
-  border: 3px dashed var(--color-green-forest);
-  border-radius: 8px;
-  padding: 14px 10px;
+  background-color: #fffdf5;
+  background-image: 
+    radial-gradient(#eed9a4 12%, transparent 13%),
+    repeating-linear-gradient(45deg, rgba(45, 106, 79, 0.05) 0, rgba(45, 106, 79, 0.05) 10px, transparent 10px, transparent 20px);
+  border: 4px solid var(--color-wood-dark);
+  border-radius: 6px;
+  box-shadow: 
+    0 0 0 2px #ffb703,
+    0 5px 0 var(--color-wood-shadow);
+  padding: 16px 12px;
 }
 
 .camera-sparkle {
@@ -886,38 +1370,98 @@ body {
 }
 .modal-backdrop.open { display: flex; }
 
+/* Modal Box (Fairy Oak Treasure Chest Theme) */
 .modal-box {
-  background: #ffffff;
+  background-color: #faedcd;
+  background-image: 
+    repeating-linear-gradient(0deg, #faedcd 0px, #faedcd 26px, #d4a373 26px, #bc6c25 28px);
   border: 5px solid var(--color-wood-dark);
-  border-radius: 10px;
-  box-shadow: 0 10px 0 var(--color-wood-shadow);
+  border-radius: 8px;
+  box-shadow: 
+    0 0 0 3px #52b788,
+    0 0 0 6px #2d6a4f,
+    0 12px 0 var(--color-wood-shadow),
+    0 24px 44px rgba(0, 0, 0, 0.65);
   width: 100%;
   max-width: 380px;
-  padding: 18px;
+  padding: 20px 18px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  position: relative;
 }
+
+/* Modal Chest Iron Straps & Brackets */
+.chest-corner-stud {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #adb5bd;
+  border: 3px solid #212529;
+  box-shadow: inset 2px 2px 0 #f8f9fa, 1px 1px 0 #000000;
+  z-index: 10;
+}
+.s-tl { top: -6px; left: -6px; }
+.s-tr { top: -6px; right: -6px; }
+.s-bl { bottom: -6px; left: -6px; }
+.s-br { bottom: -6px; right: -6px; }
+
+.chest-iron-band {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #495057;
+  border-top: 1px solid #ced4da;
+  border-bottom: 2px solid #212529;
+  pointer-events: none;
+  opacity: 0.85;
+}
+.band-top { top: 52px; }
+.band-bottom { bottom: 62px; }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 3px solid var(--color-green-mint);
-  padding-bottom: 8px;
+  background: #2d6a4f;
+  margin: -6px -4px 0 -4px;
+  padding: 8px 12px;
+  border: 3px solid var(--color-wood-dark);
+  border-radius: 4px;
+  box-shadow: 0 3px 0 var(--color-wood-shadow);
+  position: relative;
+  z-index: 5;
 }
-.modal-title { font-size: 9px; color: var(--color-wood-dark); }
+.modal-title { font-size: 9px; color: #ffffff; text-shadow: 1px 1px 0 var(--color-wood-shadow); }
 
 .pixel-btn-close {
   background: #e63946;
   border: 2px solid var(--color-wood-dark);
   color: white;
-  padding: 2px 6px;
-  font-size: 10px;
+  padding: 2px 8px;
+  font-size: 11px;
   cursor: pointer;
+  box-shadow: inset 1px 1px 0 #ff758f, 0 2px 0 var(--color-wood-shadow);
 }
 
-.modal-body { display: flex; flex-direction: column; gap: 10px; }
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff;
+  padding: 14px 12px;
+  border: 3px solid var(--color-wood-dark);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px #d8f3dc;
+  position: relative;
+  z-index: 5;
+}
+
+.modal-footer {
+  position: relative;
+  z-index: 5;
+}
 
 .cfg-hint {
   font-family: var(--font-pixel-dialogue);

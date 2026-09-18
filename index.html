@@ -17,6 +17,129 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- ========================================================
+       TRUE PIXEL ART WORLD (STARDEW VALLEY MEADOW & ROLLING HILLS)
+       ======================================================== -->
+  <div class="pixel-world-bg" id="pixelWorldBg" aria-hidden="true">
+    <!-- Sky Horizon & Radiant Pixel Sun -->
+    <div class="pixel-sky-horizon">
+      <div class="pixel-sun-orb" title="Matahari Emas Pixel ☀️">
+        <div class="sun-flare flare-1"></div>
+        <div class="sun-flare flare-2"></div>
+        <div class="sun-face">☀️</div>
+      </div>
+      
+      <!-- Multi-tier Floating Pixel Clouds -->
+      <div class="pixel-cloud c1">
+        <svg class="cloud-svg" viewBox="0 0 64 24">
+          <path d="M12 12 h8 v-4 h8 v-4 h16 v4 h8 v4 h8 v8 h-48 z" fill="#ffffff" opacity="0.95" />
+          <path d="M16 16 h40 v4 h-40 z" fill="#d0edf8" opacity="0.85" />
+        </svg>
+      </div>
+      <div class="pixel-cloud c2">
+        <svg class="cloud-svg" viewBox="0 0 48 20">
+          <path d="M8 10 h6 v-3 h6 v-3 h12 v3 h6 v3 h6 v6 h-36 z" fill="#ffffff" opacity="0.92" />
+          <path d="M12 13 h24 v3 h-24 z" fill="#d0edf8" opacity="0.8" />
+        </svg>
+      </div>
+      <div class="pixel-cloud c3">
+        <svg class="cloud-svg" viewBox="0 0 56 22">
+          <path d="M10 11 h8 v-4 h8 v-3 h14 v3 h8 v4 h6 v7 h-44 z" fill="#ffffff" opacity="0.9" />
+          <path d="M14 15 h34 v3 h-34 z" fill="#d0edf8" opacity="0.75" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Distant Mountains & Stepped Ridges (Parallax Depth) -->
+    <div class="pixel-mountains-ridge">
+      <svg class="mountain-svg" preserveAspectRatio="none" viewBox="0 0 600 120">
+        <!-- Far deep hill (stepped pixel edge) -->
+        <polygon points="0,120 0,60 40,60 40,50 90,50 90,40 140,40 140,30 180,30 180,45 220,45 220,55 270,55 270,45 320,45 320,35 370,35 370,50 420,50 420,40 480,40 480,55 540,55 540,65 600,65 600,120" fill="#2d6a4f" opacity="0.8" />
+        <!-- Mid-distance hill (sage green) -->
+        <polygon points="0,120 0,75 60,75 60,65 110,65 110,55 160,55 160,70 210,70 210,60 260,60 260,50 310,50 310,65 360,65 360,55 410,55 410,70 460,70 460,60 520,60 520,75 600,75 600,120" fill="#52b788" opacity="0.9" />
+      </svg>
+      <!-- Tiny Distant Pines on Ridge -->
+      <div class="distant-pines">
+        <span class="d-pine p-1">🌲</span>
+        <span class="d-pine p-2">🌲</span>
+        <span class="d-pine p-3">🌲</span>
+        <span class="d-pine p-4">🌲</span>
+        <span class="d-pine p-5">🌲</span>
+      </div>
+    </div>
+
+    <!-- Midground: Rolling Green Meadow, Trees, Wooden Fence & Cobblestone Path -->
+    <div class="pixel-midground-hills">
+      <!-- Rolling Meadow Base -->
+      <div class="pixel-hill-slope"></div>
+
+      <!-- Rustic Wooden Fence (Stardew Valley Rails) -->
+      <div class="pixel-rustic-fence">
+        <div class="fence-rail upper-rail"></div>
+        <div class="fence-rail lower-rail"></div>
+        <div class="fence-posts-group">
+          <span class="f-post"></span>
+          <span class="f-post"></span>
+          <span class="f-post"></span>
+          <span class="f-post"></span>
+          <span class="f-post"></span>
+          <span class="f-post"></span>
+          <span class="f-post"></span>
+          <span class="f-post"></span>
+        </div>
+      </div>
+
+      <!-- Winding Cobblestone Trail -->
+      <div class="pixel-cobblestones">
+        <span class="cobble-stone c-s1"></span>
+        <span class="cobble-stone c-s2"></span>
+        <span class="cobble-stone c-s3"></span>
+        <span class="cobble-stone c-s4"></span>
+        <span class="cobble-stone c-s5"></span>
+      </div>
+
+      <!-- Cozy Pixel Apple / Blossom Trees -->
+      <div class="pixel-tree-object tree-left-side">
+        <div class="tree-foliage">
+          <span class="tree-fruit">🍎</span>
+        </div>
+        <div class="tree-trunk-base"></div>
+      </div>
+
+      <div class="pixel-tree-object tree-right-side">
+        <div class="tree-foliage foliage-sakura">
+          <span class="tree-fruit">🌸</span>
+        </div>
+        <div class="tree-trunk-base"></div>
+      </div>
+    </div>
+
+    <!-- Foreground Meadow: Wildflower Patches, Grass Blades & Animated Fluttering Critters -->
+    <div class="pixel-foreground-strip">
+      <div class="pixel-grass-texture"></div>
+
+      <!-- Scattered Botanical Tufts -->
+      <div class="wildflower-patch patch-left">
+        <span class="wf wf-dandelion">🌼</span>
+        <span class="wf wf-sunflower">🌻</span>
+        <span class="wf wf-clover">🍀</span>
+        <span class="wf wf-melati">🤍</span>
+      </div>
+
+      <div class="wildflower-patch patch-right">
+        <span class="wf wf-rose">🌹</span>
+        <span class="wf wf-melati">🤍</span>
+        <span class="wf wf-sunflower">🌻</span>
+        <span class="wf wf-dandelion">🌼</span>
+      </div>
+
+      <!-- Fluttering Animated Critters in Landscape -->
+      <div class="critter-wander critter-bfly-blue">🦋</div>
+      <div class="critter-wander critter-bfly-orange">🦋</div>
+      <div class="critter-wander critter-bee-buzz">🐝</div>
+    </div>
+  </div>
+
   <!-- Canvas untuk efek partikel bunga multi-ukuran (mikro, sedang, besar) -->
   <canvas id="gardenCanvas"></canvas>
 
@@ -62,7 +185,12 @@
   </nav>
 
   <!-- Main Game Container -->
-  <main class="game-container">
+  <main class="game-container pixel-board-theme">
+    <!-- 4 Pixel Brass Corner Studs -->
+    <div class="pixel-corner-stud stud-tl"></div>
+    <div class="pixel-corner-stud stud-tr"></div>
+    <div class="pixel-corner-stud stud-bl"></div>
+    <div class="pixel-corner-stud stud-br"></div>
     
     <!-- Top Header Banner with Multi-Sized Floral Garland -->
     <header class="game-header">
@@ -198,7 +326,13 @@
     </section>
 
     <!-- RPG Dialogue Window -->
-    <section class="rpg-dialogue-window" id="dialogueWindow">
+    <section class="rpg-dialogue-window pixel-parchment-window" id="dialogueWindow">
+      <!-- 4 Golden Pixel Corner Brackets -->
+      <div class="pixel-dialogue-corner c-tl"></div>
+      <div class="pixel-dialogue-corner c-tr"></div>
+      <div class="pixel-dialogue-corner c-bl"></div>
+      <div class="pixel-dialogue-corner c-br"></div>
+
       <!-- Nameplate -->
       <div class="dialogue-nameplate">
         <span id="speakerName">Flora 🧚‍♀️</span>
@@ -371,7 +505,15 @@
 
   <!-- Modal Konfigurasi Kontak WA (⚙️) -->
   <div id="configModal" class="modal-backdrop">
-    <div class="modal-box">
+    <div class="modal-box pixel-chest-theme">
+      <!-- 4 Pixel Corner Brackets & Iron Bands -->
+      <div class="chest-corner-stud s-tl"></div>
+      <div class="chest-corner-stud s-tr"></div>
+      <div class="chest-corner-stud s-bl"></div>
+      <div class="chest-corner-stud s-br"></div>
+      <div class="chest-iron-band band-top"></div>
+      <div class="chest-iron-band band-bottom"></div>
+
       <div class="modal-header">
         <h2 class="modal-title">⚙️ Pengaturan Kontak WhatsApp</h2>
         <button id="btnCloseModal" class="pixel-btn-close">✖</button>
