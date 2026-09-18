@@ -466,12 +466,22 @@ const STEPS = [
   },
   {
     stepId: 'step5',
-    getText: () => `HOREEE! 🏆 Selamat! Semua bunga melati, dandelion, mawar, dan bunga matahari telah mekar sempurna! Ini Buket Bunga Cinta & Quest Terakhirmu... 📸💕`,
+    getText: () => `HOREEE! 🏆 Selamat! Kamu telah resmi dinyatakan LULUS sebagai Ratu Penjaga Taman Bunga Tercantik Se-Semesta dan Pemilik Sah Hati ${state.hisName}! Ini Sertifikat Kelulusan Resmimu... 📜✨`,
     onEnter: () => {
-      setCharacterMood('happy', 'TAMAN MEKAR SEMPURNA! 💐✨');
+      setCharacterMood('happy', 'RESMI LULUS BUCIN! 📜🌻');
       playGardenFanfare();
       burstFlowers(45);
-      setupFinalStep();
+      setupCertificateStep();
+    }
+  },
+  {
+    stepId: 'step6',
+    getText: () => `Dan sekarang tiba di QUEST TAMAN BUNGA TERAKHIR! 📸💐 Persembahkan buket bunga cinta & kirimkan PAP paling manis yang kamu suka langsung ke WhatsApp ${state.hisName}!`,
+    onEnter: () => {
+      setCharacterMood('happy', 'QUEST PAP TERAKHIR! 📸💕');
+      playFairyChime();
+      burstFlowers(30);
+      setupPapStep();
     }
   }
 ];
@@ -623,10 +633,10 @@ btnMaxLove.addEventListener('click', () => {
 });
 
 // ============================================================
-// 7. STEP 5: FINAL STEP & WHATSAPP REDIRECTION
+// 7. STEP 5 & 6: SERTIFIKAT & WHATSAPP PAP QUEST
 // ============================================================
 
-function setupFinalStep() {
+function setupCertificateStep() {
   const her = (state.herName || 'Putri Bunga').trim();
   const his = (state.hisName || state.config.defaultHisName || 'Pangerannya').trim();
 
@@ -642,13 +652,21 @@ function setupFinalStep() {
       Telah resmi dinobatkan sebagai <strong>Ratu Penjaga Taman Bunga Tercantik Se-Semesta</strong> dan Pemilik Sah Hati <strong>${his}</strong> dengan Tingkat Mekar Cinta: <strong>${state.loveDescription}</strong>!
     `;
   }
+}
 
+function setupPapStep() {
+  const his = (state.hisName || state.config.defaultHisName || 'Pangerannya').trim();
   const papQuestDesc = document.getElementById('papQuestDesc');
   if (papQuestDesc) {
     papQuestDesc.innerHTML = `
       Kirimkan Pap paling manis & cantik yang disukai <strong>${his}</strong> sekarang juga lewat WhatsApp! 📸🌻
     `;
   }
+}
+
+function setupFinalStep() {
+  setupCertificateStep();
+  setupPapStep();
 }
 
 document.getElementById('btnSendPap').addEventListener('click', () => {
@@ -751,12 +769,23 @@ document.getElementById('inputHisName').addEventListener('keydown', (e) => {
   if (e.key === 'Enter') document.getElementById('btnStep2Next').click();
 });
 
-// Step 4 -> 5
+// Step 4 -> 5 (Love Meter -> Sertifikat)
 document.getElementById('btnStep4Next').addEventListener('click', () => {
   initAudio();
   playFairyChime();
   goToStep(5);
 });
+
+// Step 5 -> 6 (Sertifikat -> Quest Pap Terakhir)
+const btnStep5Next = document.getElementById('btnStep5Next');
+if (btnStep5Next) {
+  btnStep5Next.addEventListener('click', () => {
+    initAudio();
+    playGardenFanfare();
+    burstFlowers(35);
+    goToStep(6);
+  });
+}
 
 // Restart Game
 document.getElementById('btnRestartGame').addEventListener('click', () => {
