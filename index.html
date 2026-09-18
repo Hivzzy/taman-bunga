@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>🌻 Taman Bunga Ajaib: Petualangan Cinta Pixel Art 🌿🌼</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <meta name="description" content="Petualangan cinta di taman bunga ajaib pixel art dengan melati, dandelion, mawar, dan bunga matahari! 🌻🌿🌼" />
+  <meta name="theme-color" content="#52b788" />
+  <meta property="og:title" content="🌻 Taman Bunga Ajaib Spesial Untukmu 🌿" />
+  <meta property="og:description" content="Buka kebun rahasia penuh bunga melati, dandelion, mawar, dan bunga matahari dari seseorang yang mencintaimu! 🌼✨" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Canvas untuk efek biji dandelion melayang, kelopak melati, mawar, dan bunga matahari -->
+  <canvas id="gardenCanvas"></canvas>
+
+  <!-- Top Navigation (Sound Toggle & WA Settings) -->
+  <nav class="top-nav">
+    <button id="soundToggle" class="pixel-btn-icon" title="Toggle Musik & Suara">
+      <span id="soundIcon">🔊</span>
+    </button>
+    <button id="configToggle" class="pixel-btn-icon" title="Pengaturan Kontak WA">
+      <span>⚙️</span>
+    </button>
+  </nav>
+
+  <!-- Main Game Container -->
+  <main class="game-container">
+    
+    <!-- Top Header Banner with Flowers -->
+    <header class="game-header">
+      <span class="header-flower-icon">🌻</span>
+      <div class="header-titles">
+        <span class="game-subtitle">★ SECRET GARDEN ADVENTURE ★</span>
+        <h1 class="game-title">TAMAN BUNGA CINTA</h1>
+      </div>
+      <span class="header-flower-icon">🌼</span>
+    </header>
+
+    <!-- Character Stage: Flora The Flower Fairy 🧚‍♀️ -->
+    <section class="character-stage" id="characterStage" title="Ketuk Peri Flora! ✨">
+      <div class="fairy-halo"></div>
+
+      <!-- Animated Butterflies in Orbit -->
+      <div class="butterflies-orbit">
+        <span class="pixel-bfly b1">🦋</span>
+        <span class="pixel-bfly b2">✨</span>
+      </div>
+
+      <!-- Flora Sprite Box -->
+      <div id="characterSprite" class="character-box normal">
+        <!-- SVG Pixel Flower Fairy -->
+        <svg id="floraSvg" class="pixel-fairy-svg" viewBox="0 0 36 36">
+          <!-- Translucent Fluttering Fairy Wings -->
+          <g class="fairy-wings" id="fairyWings">
+            <!-- Left Wing -->
+            <polygon points="4,10 12,12 12,20 4,16" fill="#caf0f8" opacity="0.85" />
+            <polygon points="2,14 10,16 10,22 2,18" fill="#90e0ef" opacity="0.7" />
+            <rect x="6" y="12" width="2" height="2" fill="#ffffff" />
+            <!-- Right Wing -->
+            <polygon points="32,10 24,12 24,20 32,16" fill="#caf0f8" opacity="0.85" />
+            <polygon points="34,14 26,16 26,22 34,18" fill="#90e0ef" opacity="0.7" />
+            <rect x="28" y="12" width="2" height="2" fill="#ffffff" />
+          </g>
+
+          <!-- Golden Hair -->
+          <rect x="10" y="6" width="16" height="13" fill="#ffb703" />
+          <rect x="8" y="10" width="20" height="12" fill="#ffb703" />
+          <rect x="7" y="14" width="4" height="10" fill="#f4a261" />
+          <rect x="25" y="14" width="4" height="10" fill="#f4a261" />
+
+          <!-- Flower Crown (Melati, Mawar, Dandelion, Sunflower) -->
+          <g class="flower-crown" id="flowerCrown">
+            <rect x="9" y="8" width="18" height="2" fill="#2d6a4f" />
+            <!-- Red Rose -->
+            <rect x="10" y="6" width="3" height="3" fill="#e63946" />
+            <rect x="11" y="7" width="1" height="1" fill="#ff758f" />
+            <!-- White Jasmine (Melati) -->
+            <rect x="14" y="5" width="3" height="3" fill="#ffffff" />
+            <rect x="15" y="6" width="1" height="1" fill="#ffeaa7" />
+            <!-- Yellow Sunflower -->
+            <rect x="19" y="5" width="4" height="4" fill="#ffb703" />
+            <rect x="20" y="6" width="2" height="2" fill="#582f0e" />
+            <!-- Dandelion Fluff -->
+            <rect x="24" y="6" width="3" height="3" fill="#fefae0" />
+          </g>
+
+          <!-- Face -->
+          <rect x="11" y="12" width="14" height="11" fill="#ffe5d9" />
+          <path d="M11 11 h14 v1 h-14 z M10 12 h1 v11 h-1 z M25 12 h1 v11 h-1 z M12 23 h12 v1 h-12 z" fill="#2d6a4f" opacity="0.7" />
+
+          <!-- Cheeks Blush (Peachy Soft) -->
+          <rect class="blush-pixel" x="11" y="18" width="3" height="2" fill="#f4a261" />
+          <rect class="blush-pixel" x="22" y="18" width="3" height="2" fill="#f4a261" />
+
+          <!-- Eyes Group -->
+          <g id="fairyEyes">
+            <!-- Normal Eyes -->
+            <g class="eye-normal">
+              <rect x="13" y="15" width="2" height="3" fill="#1b4332" />
+              <rect x="21" y="15" width="2" height="3" fill="#1b4332" />
+              <rect x="13" y="15" width="1" height="1" fill="#ffffff" />
+              <rect x="21" y="15" width="1" height="1" fill="#ffffff" />
+            </g>
+            <!-- Crying Eyes (Waterfall Tears) -->
+            <g class="eye-crying">
+              <path d="M12 16 h4 v2 h-4 z M20 16 h4 v2 h-4 z" fill="#1b4332" />
+              <g class="tears-waterfall">
+                <rect x="13" y="18" width="2" height="12" fill="#00b4d8" />
+                <rect x="21" y="18" width="2" height="12" fill="#00b4d8" />
+                <rect x="12" y="20" width="1" height="6" fill="#90e0ef" />
+                <rect x="23" y="20" width="1" height="6" fill="#90e0ef" />
+              </g>
+            </g>
+            <!-- Happy Sparkling Eyes -->
+            <g class="eye-happy">
+              <path d="M12 16 h1 v-1 h2 v1 h1 v1 h-4 z" fill="#2d6a4f" />
+              <path d="M20 16 h1 v-1 h2 v1 h1 v1 h-4 z" fill="#2d6a4f" />
+              <rect x="14" y="17" width="1" height="1" fill="#ffb703" />
+              <rect x="22" y="17" width="1" height="1" fill="#ffb703" />
+            </g>
+          </g>
+
+          <!-- Mouth -->
+          <g id="fairyMouth">
+            <rect class="mouth-normal" x="17" y="20" width="2" height="1" fill="#d90429" />
+            <rect class="mouth-open" x="16" y="20" width="4" height="2" fill="#e63946" />
+            <path class="mouth-sad" d="M16 21 h4 v1 h-4 z M15 22 h1 v1 h-1 z M20 22 h1 v1 h-1 z" fill="#1b4332" />
+          </g>
+
+          <!-- Green Leaf Fairy Dress -->
+          <polygon points="13,23 23,23 26,32 10,32" fill="#52b788" />
+          <polygon points="15,23 21,23 24,31 12,31" fill="#74c69d" />
+          <!-- Sunflower Belt -->
+          <rect x="12" y="25" width="12" height="2" fill="#ffb703" />
+          <rect x="17" y="24" width="2" height="4" fill="#582f0e" />
+
+          <!-- Magic Flower Wand -->
+          <g class="magic-wand" id="magicWand">
+            <line x1="26" y1="28" x2="31" y2="15" stroke="#7f4f24" stroke-width="1.5" />
+            <!-- Glowing Wand Star Flower -->
+            <polygon points="31,12 33,14 31,16 29,14" fill="#ffd166" />
+            <rect x="30" y="13" width="2" height="2" fill="#ffffff" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- Status Tag -->
+      <div class="character-tag">
+        <span class="status-flower-dot">🌻</span>
+        <span id="characterMood">Flora Peri Taman Bunga 🌿</span>
+      </div>
+    </section>
+
+    <!-- RPG Dialogue Window -->
+    <section class="rpg-dialogue-window" id="dialogueWindow">
+      <!-- Nameplate -->
+      <div class="dialogue-nameplate">
+        <span id="speakerName">Flora 🧚‍♀️</span>
+      </div>
+
+      <!-- Dialogue Content -->
+      <div class="dialogue-content">
+        <p id="typewriterText" class="dialogue-text"></p>
+        <span id="blinkingCursor" class="blinking-arrow">▼</span>
+      </div>
+
+      <div class="click-skip-hint">
+        <span>*Ketuk di mana saja untuk selesaikan teks langsung</span>
+      </div>
+
+      <!-- Interactive Steps Area -->
+      <div id="interactiveArea" class="interactive-area">
+        
+        <!-- STEP 0: START SCREEN -->
+        <div id="step0" class="step-view active">
+          <div class="start-flower-badge">
+            <span>🌿 EDISI TAMAN RAHASIA 🌿</span>
+          </div>
+          <button id="btnStartGame" class="pixel-btn primary pulse-btn">
+            🌻 MASUKI TAMAN BUNGA CINTA! ✨
+          </button>
+        </div>
+
+        <!-- STEP 1: NAMA KAMU -->
+        <div id="step1" class="step-view">
+          <div class="pixel-input-group">
+            <label class="pixel-label" for="inputHerName">Nama Putri Secantik Bunga Melati:</label>
+            <input type="text" id="inputHerName" class="pixel-input" placeholder="Ketik namamu di sini..." maxlength="25" autocomplete="off" />
+          </div>
+          <button id="btnStep1Next" class="pixel-btn primary">
+            Lanjut Memetik Bunga > 🌼
+          </button>
+        </div>
+
+        <!-- STEP 2: NAMA PACAR -->
+        <div id="step2" class="step-view">
+          <div class="pixel-input-group">
+            <label class="pixel-label" for="inputHisName">Nama Pangeran / Sosok Mataharimu:</label>
+            <input type="text" id="inputHisName" class="pixel-input" placeholder="Ketik nama pacarmu..." maxlength="25" autocomplete="off" />
+          </div>
+          <button id="btnStep2Next" class="pixel-btn primary">
+            Lanjut > 🌻
+          </button>
+        </div>
+
+        <!-- STEP 3: TRIAL OF LOVE (IYA vs TIDAK) -->
+        <div id="step3" class="step-view">
+          <div class="love-decision-container">
+            <button id="btnYesLove" class="pixel-btn primary btn-huge-yes">
+              IYA BANGET! 🌻💖
+            </button>
+            <button id="btnNoLove" class="pixel-btn danger btn-shrink-no">
+              Nggak... 🥀
+            </button>
+          </div>
+          <div id="rejectionFeedback" class="rejection-feedback"></div>
+        </div>
+
+        <!-- STEP 4: LOVE METER (BUNGA MEKAR) -->
+        <div id="step4" class="step-view">
+          <div class="love-meter-wrapper">
+            <div class="meter-label-row">
+              <span class="meter-title">DAYA MEKAR CINTA:</span>
+              <span id="meterValText" class="meter-val">100%</span>
+            </div>
+
+            <!-- Garden Vine Growth Bar -->
+            <div class="garden-vine-frame">
+              <div class="vine-fill" id="vineFill"></div>
+              <div class="flower-bud" id="flowerBud">🌼</div>
+            </div>
+
+            <div class="slider-container">
+              <input type="range" id="loveSlider" min="100" max="1000" step="50" value="100" class="pixel-slider" />
+            </div>
+
+            <div class="meter-fun-badge" id="meterDescBadge">
+              "Mekar harum seperti melati!" 🤍
+            </div>
+
+            <button id="btnMaxLove" class="pixel-btn secondary mini-btn">
+              🌻 MEKARKAN SAMPAI MAX 1000%! 🚀
+            </button>
+          </div>
+          <button id="btnStep4Next" class="pixel-btn primary">
+            Kunci & Lihat Bunga Cintaku! 🔒💐
+          </button>
+        </div>
+
+        <!-- STEP 5: SELESAI / BUKET BUNGA & KIRIM PAP WA -->
+        <div id="step5" class="step-view">
+          <div class="victory-garden-card">
+            
+            <!-- Garden Bouquet Showcase -->
+            <div class="bouquet-showcase">
+              <div class="bouquet-icon">💐</div>
+              <h2 class="bouquet-title">BUKET BUNGA CINTA ABADI</h2>
+              <div class="flower-badges-row">
+                <span class="f-pill">🤍 Melati Suci</span>
+                <span class="f-pill">🌻 Bunga Matahari</span>
+                <span class="f-pill">🌹 Mawar Abadi</span>
+                <span class="f-pill">🌼 Dandelion Doa</span>
+              </div>
+              <p class="bouquet-summary" id="bouquetSummary">
+                Bunga-bunga di taman bermekaran menyambut cinta kalian berdua!
+              </p>
+            </div>
+
+            <!-- WhatsApp PAP Quest Box -->
+            <div class="pap-action-box">
+              <div class="camera-sparkle">📸 🌸</div>
+              <p class="pap-quest-title">QUEST TAMAN BUNGA TERAKHIR:</p>
+              <p class="pap-quest-desc" id="papQuestDesc">
+                Kirimkan Pap paling manis yang disukai pacarmu sekarang juga ke WhatsApp!
+              </p>
+              
+              <button id="btnSendPap" class="pixel-btn success pulse-btn">
+                💌 KIRIM LAPORAN BUNGA & PAP KE WA! 📸🌻
+              </button>
+
+              <button id="btnRestartGame" class="pixel-btn secondary small-btn">
+                🔄 Jelajahi Taman Dari Awal
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom Garden Footer -->
+    <footer class="game-footer">
+      <div class="pixel-flowers-strip">
+        <span>🌻</span>
+        <span>🤍</span>
+        <span>🌹</span>
+        <span>🌼</span>
+        <span>🌿</span>
+        <span>🌻</span>
+        <span>🤍</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Modal Konfigurasi Kontak WA (⚙️) -->
+  <div id="configModal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 class="modal-title">⚙️ Pengaturan Kontak WhatsApp</h2>
+        <button id="btnCloseModal" class="pixel-btn-close">✖</button>
+      </div>
+      <div class="modal-body">
+        <label class="pixel-label" for="cfgWaNumber">Nomor WhatsApp Kamu (format 08... / 628...):</label>
+        <input type="tel" id="cfgWaNumber" class="pixel-input" placeholder="Contoh: 085189968899" />
+        
+        <label class="pixel-label" for="cfgDefaultBoy">Nama Kamu (Sosok Matahari):</label>
+        <input type="text" id="cfgDefaultBoy" class="pixel-input" placeholder="Nama kamu" />
+
+        <p class="cfg-hint">
+          *Nomor WA otomatis tersimpan di browser untuk link pengiriman buket & Pap!
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button id="btnSaveConfig" class="pixel-btn primary">Simpan Pengaturan 💾</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
